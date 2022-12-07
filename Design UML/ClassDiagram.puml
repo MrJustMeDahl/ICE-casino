@@ -8,6 +8,12 @@ MainMenu *-- AllGames
 AllGames <|-- CardGames
 CardGames *-- CardDeck
 CardDeck *-- Card
+AllGames <|-- DiceGames
+Dice <|-- DiceGames
+AllGames <|-- MiscGames
+DiceGames <|-- Craps
+MiscGames <|-- Roulette
+CardGames <|-- BlackJack
 
 class Main
 class User{
@@ -82,6 +88,39 @@ class Card{
 
 + constructor(String name, String suits, int value)
 + get(name, suits, value)
+
+}
+
+interface Dice{
++ int rollDie()
+
+}
+
+Abstract Class DiceGames{
+- Boolean hasWon
+- ArrayList<Dice> numberOfDice
+# int rollDie()
+
+}
+
+Class Craps{
+
+
+}
+
+Class Roulette{
+
+
+}
+
+Class BlackJack{
+
+
+}
+
+Abstract Class MiscGames{
+- Boolean hasWon
+- String name
 
 }
 
