@@ -3,9 +3,11 @@
 Main *-- ProgramControl
 ProgramControl *-- MainMenu
 ProgramControl *-- User
-MainMenu *-- Game
 ProgramControl *-- DatabaseIO
-
+MainMenu *-- AllGames
+AllGames <|-- CardGames
+CardGames *-- CardDeck
+CardDeck *-- Card
 
 class Main
 class User{
@@ -16,32 +18,78 @@ class User{
 - int balance
 
 + makeBet()
-+ recievePrizeMoney()
-+ AddMoney()
++ receivePrizeMoney()
++ addMoney()
+
++ constructor(int userID, String userName, String password, int balance)
 
 }
 class MainMenu{
 
-+ Login()
-+ LogOut()
-+ SeeUserBalance()
-+ ChooseGame()
++ login()
++ logOut()
++ seeUserBalance()
++ chooseGame()
 
 }
 class ProgramControl{
 
 + static User currentUser
 + Array<String>allGames
++ runCasino()
+
 
 
 }
-interface Game
+
+interface AllGames{
+
++ startGame()
++ StopGame()
++ chooseBet()
++ calculatePrizeMoney()
++ newRound()
+
+}
+
+Abstract class CardGames{
+
+- boolean hasWon
+- String name
+- CardDeck currentDeck
++ constructor(boolean hasWon, String name)
+
+}
+
+class CardDeck{
+
+- ArrayList<Card>cards
+- ArrayList<Card>usedCards
+- int cardAmount
+
++ shuffleCards()
++ drawFirstCard()
++ addUsedCards()
++ constructor(ArrayList<Card>cards, int cardAmount)
+
+}
+
+class Card{
+
+- String name
+- String suits
+- int value
+
++ constructor(String name, String suits, int value)
++ get(name, suits, value)
+
+}
 
 class DatabaseIO{
 
-+ LoadUserData()
-+ CreateNewUser()
-+ UpdateUserBalance()
++ loadUserData()
++ createNewUser()
++ updateUserBalance()
 
 }
 
