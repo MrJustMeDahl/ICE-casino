@@ -1,5 +1,49 @@
 @startuml
 
+Main *-- ProgramControl
+ProgramControl *-- MainMenu
+ProgramControl *-- User
+MainMenu *-- Game
+ProgramControl *-- DatabaseIO
+
+
 class Main
+class User{
+
+- int userID
+- String userName
+- String password
+- int balance
+
++ makeBet()
++ recievePrizeMoney()
++ AddMoney()
+
+}
+class MainMenu{
+
++ Login()
++ LogOut()
++ SeeUserBalance()
++ ChooseGame()
+
+}
+class ProgramControl{
+
++ static User currentUser
++ Array<String>allGames
+
+
+}
+interface Game
+
+class DatabaseIO{
+
++ LoadUserData()
++ CreateNewUser()
++ UpdateUserBalance()
+
+}
+
 
 @enduml
