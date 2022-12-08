@@ -23,10 +23,8 @@ class User{
 - String password
 - int balance
 
-+ makeBet()
-+ receivePrizeMoney()
-+ addMoney()
-
++ int makeBet(int betSize)
++ int receiveMoney(int money)
 + constructor(int userID, String userName, String password, int balance)
 
 }
