@@ -5,11 +5,11 @@ public class Textbox extends PApplet {
     public int X = 0, Y = 0, H = 35, W = 200;
     public int TEXTSIZE = 24;
 
-    // COLORS
-    public color Background = color(140, 140, 140);
-    public color Foreground = color(0, 0, 0);
-    public color BackgroundSelected = color(160, 160, 160);
-    public color Border = color(30, 30, 30);
+    // Initialize and declare colors
+    public color background = color(140,140,140);
+    public color foreground = color(0,0,0);
+    public color backgroundSelected = color(160,160,160);
+    public color border = color(30,30,30);
 
     public boolean BorderEnable = false;
     public int BorderWeight = 1;
@@ -23,21 +23,21 @@ public class Textbox extends PApplet {
         // CREATE OBJECT DEFAULT TEXTBOX
     }
 
-    void TEXTBOX(int x, int y, int w, int h) {
+    void Textbox(int x, int y, int w, int h) {
         X = x; Y = y; W = w; H = h;
     }
 
     void DRAW() {
         // DRAWING THE BACKGROUND
         if (selected) {
-            fill(BackgroundSelected);
+            fill(backgroundSelected);
         } else {
-            fill(Background);
+            fill(background);
         }
 
         if (BorderEnable) {
             strokeWeight(BorderWeight);
-            stroke(Border);
+            stroke(border);
         } else {
             noStroke();
         }
@@ -45,7 +45,7 @@ public class Textbox extends PApplet {
         rect(X, Y, W, H);
 
         // DRAWING THE TEXT ITSELF
-        fill(Foreground);
+        fill(foreground);
         textSize(TEXTSIZE);
         text(Text, X + (textWidth("a") / 2), Y + TEXTSIZE);
     }
