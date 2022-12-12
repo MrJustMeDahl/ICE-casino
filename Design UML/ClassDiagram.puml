@@ -15,6 +15,7 @@ DiceGames <|-- Craps
 MiscGames <|-- Roulette
 CardGames <|-- BlackJack
 Roulette *-- RouletteWheel
+RouletteWheel *-- Roulettefields
 
 class Main
 class User{
@@ -139,6 +140,16 @@ class RouletteWheel{
 + int getvalue()
 + String getcolor()
 + ArrayList<String> readWheelData()
+
+}
+
+class Roulettefields{
+- int ID
+- int value
+- int color
+- boolean even
+
++ Roulettefields()
 
 }
 
