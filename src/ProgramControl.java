@@ -13,6 +13,8 @@ public class ProgramControl {
     MainMenu mainMenu;
     public static User currentUser;
     private ArrayList<String> allGames;
+    boolean loginChosen = false;
+    boolean createNewUserChosen = false;
     boolean loginSuccess = false;
     public ProgramControl(PApplet sketch, MainMenu mainMenu){
         this.sketch = sketch;
@@ -30,7 +32,10 @@ public class ProgramControl {
         } else {
             mainMenu.runMainMenu();
         }
-        displayOptions();
+        if(!loginChosen && !createNewUserChosen) {
+            displayOptions();
+            chooseOption();
+        }
         /*Log in or make new user
         if(mousePressed ) {
             currentUser = login();
@@ -98,5 +103,24 @@ public class ProgramControl {
             sketch.fill(0);
         }
         sketch.text("Create new account", sketch.width/2, sketch.height/2 + 62);
+    }
+
+    private void chooseOption(){
+        if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 250 && sketch.mouseX < sketch.width/2 + 250 && sketch.mouseY > sketch.height/2 - 75 && sketch.mouseY < sketch.height/2 - 25){
+            loginChosen = true;
+            login();
+        }
+        if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 250 && sketch.mouseX < sketch.width/2 + 250 && sketch.mouseY > sketch.height/2 + 25 && sketch.mouseY < sketch.height/2 + 75){
+            createNewUserChosen = true;
+            createNewUser();
+        }
+    }
+
+    private void login(){
+        
+    }
+
+    private void createNewUser(){
+
     }
 }
