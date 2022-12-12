@@ -45,10 +45,10 @@ public class ProgramControl {
             currentUser = DatabaseIO.createNewUser();
             mainMenu.runMainMenu();
         }
-        */
+
 
     }
-/*
+
     private User login(){
         //TODO: Run visual login screen
         User user = DatabaseIO.loadUserData(username, password);
@@ -63,7 +63,7 @@ public class ProgramControl {
         }
         return user;
     }
- */
+
     private void runBackground(){
         sketch.image(this.img, 0,0, 1240, 780);
         sketch.textFont(this.welcomeFont);

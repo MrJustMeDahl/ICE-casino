@@ -9,12 +9,14 @@ import static java.lang.Thread.sleep;
 public class Roulette extends PApplet {
     PFont f;
     RouletteWheel readWheelData = new RouletteWheel();
+    int placeBet = 0;
     int rectX = height/2+1200;
     int rectY = width/2+130;
-
     int cols = 9;
     int rows = 4;
 
+    int textOutX = width/6+60;
+    int textOutY = height/15+730;
 //******
 // Roulette constructor
 //******
@@ -33,15 +35,13 @@ public class Roulette extends PApplet {
 //*******
         public void setup(){
             background(0,55,0);
-//******
-// Array of bettingbuttons
-//******
-
-
-
             image (loadImage("Pictures/RoulettePictures/Roulette.jpeg"), height/6,width/15);
             f = createFont("Times New Roman",16);
 
+
+//******
+// Array of bettingbuttons
+//******
 
 
 
@@ -93,18 +93,20 @@ public class Roulette extends PApplet {
         rectY = width/2+130;
 
 
-
-
-
-
-
 //*******
 // Exiting the game
 //*******
             if (keyPressed){
 
                 if(key == 'q' || key == 'Q'){
-                    System.out.println("Quiting program" );
+                    textFont(f, 16);
+                    fill(255);
+                    text("Exiting program", width/2, height/2);
+                    try{
+                        sleep(3000);
+                    } catch (InterruptedException e){
+
+                    }
                     exit();
                 }
             }
@@ -137,20 +139,26 @@ public class Roulette extends PApplet {
 // check if the user is wins or not
 // payout prizemoney or deduct loss from user balance
 //*******
-    /*
+/*
           if ( placeBet == result){
+        text("Congratulation. You have won" + payOut + " will be inserted to your account", textOutX, textOutY);
+        try{
+            sleep(3000);
+        } catch (InterruptedException e){
+
+        }
               payOut();
           }
           else{
-              placeBet == null;
-              System.out.println("Sorry you've lost your bet");
+              placeBet == 0;
+              text("Sorry you've lost your bet", textOutX, textOutY);
               try{
                   sleep(3000);
               } catch (InterruptedException e){
 
               }
           }
-    */
+*/
 
 //*******
 //Runs the Roulette Algorithm
