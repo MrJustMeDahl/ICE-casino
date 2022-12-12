@@ -4,20 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8940c59d-a668-4e96-aadf-b4e21aa6ba3a" name="Changes" comment="updated UML">
-      <change afterPath="$PROJECT_DIR$/Data/RouletteData/Roulette.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Roulettefields.java" afterDir="false" />
+    <list default="true" id="8940c59d-a668-4e96-aadf-b4e21aa6ba3a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Design UML/ClassDiagram.puml" beforeDir="false" afterPath="$PROJECT_DIR$/Design UML/ClassDiagram.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ICE-casino.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ICE-casino.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/BettingRoulette.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/RoulettePictures/BettingRoulette.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/Roulette.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/RoulettePictures/Roulette.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ProgramControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProgramControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Roulette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Roulette.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RouletteWheel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RouletteWheel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Textbox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Textbox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CardGames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CardGames.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,23 +22,26 @@
       <list>
         <option value="UML Class" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="origin/master" />
+    <option name="BRANCH" value="Danys-work" />
   </component>
   <component name="Git.Settings">
-    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="Danys-work" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
@@ -62,30 +55,23 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultPlantUmlFileTemplate": "UML Class",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Carsten/OneDrive/Skrivebord/processing-4.1.1/core/library/core.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultPlantUmlFileTemplate&quot;: &quot;UML Class&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/techn/OneDrive/Skrivebord/Ice&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Carsten\Desktop\InteliJ\ICE-casino\Pictures\RoulettePictures" />
-      <recent name="C:\Users\Carsten\Desktop\InteliJ\ICE-casino\Pictures" />
-    </key>
-  </component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -96,6 +82,7 @@
       <updated>1670406020934</updated>
       <workItem from="1670410792050" duration="3653000" />
       <workItem from="1670620909071" duration="1198000" />
+      <workItem from="1670688091468" duration="781000" />
     </task>
     <task id="LOCAL-00001" summary="updated UML">
       <created>1670411489850</created>
@@ -123,6 +110,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="updated UML" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated UML" />
+    <MESSAGE value="updated UML&#10;Made abstract CardGames class&#10;Made public Card class&#10;Made public CarDeck Class" />
+    <MESSAGE value="updated UML&#10;Made abstract CardGames class&#10;Made public Card class&#10;Made public CarDeck Class&#10;Made interface AllGames" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated UML&#10;Made abstract CardGames class&#10;Made public Card class&#10;Made public CarDeck Class&#10;Made interface AllGames" />
   </component>
 </project>
