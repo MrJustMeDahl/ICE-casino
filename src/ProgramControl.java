@@ -10,12 +10,15 @@ public class ProgramControl {
     private PImage img;
     private PFont welcomeFont;
     private PFont menuFont;
-    MainMenu mainMenu;
+    private MainMenu mainMenu;
     public static User currentUser;
     private ArrayList<String> allGames;
-    boolean loginChosen = false;
-    boolean createNewUserChosen = false;
-    boolean loginSuccess = false;
+    private boolean loginChosen = false;
+    private boolean createNewUserChosen = false;
+    private boolean loginSuccess = false;
+    private UserInputBox userInputUsername;
+    private UserInputBox userInputPassword;
+
     public ProgramControl(PApplet sketch, MainMenu mainMenu){
         this.sketch = sketch;
         this.allGames = new ArrayList<>(Arrays.asList("BlackJack", "Craps", "Roulette"));
@@ -23,6 +26,8 @@ public class ProgramControl {
         this.welcomeFont = sketch.createFont("Georgia", 80);
         this.menuFont = sketch.createFont("Georgia", 50);
         this.mainMenu = mainMenu;
+        this.userInputUsername = new UserInputBox(sketch.width / 2, sketch.height / 2 - 50, 500, 75, "Username");
+        this.userInputPassword = new UserInputBox(sketch.width / 2, sketch.height / 2 + 50, 500, 75, "Password");
     }
 
     public void runCasino(){
@@ -35,6 +40,9 @@ public class ProgramControl {
         if(!loginChosen && !createNewUserChosen) {
             displayOptions();
             chooseOption();
+        }
+        if(loginChosen){
+            login();
         }
         /*Log in or make new user
         if(mousePressed ) {
@@ -108,19 +116,80 @@ public class ProgramControl {
     private void chooseOption(){
         if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 250 && sketch.mouseX < sketch.width/2 + 250 && sketch.mouseY > sketch.height/2 - 75 && sketch.mouseY < sketch.height/2 - 25){
             loginChosen = true;
-            login();
         }
         if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 250 && sketch.mouseX < sketch.width/2 + 250 && sketch.mouseY > sketch.height/2 + 25 && sketch.mouseY < sketch.height/2 + 75){
             createNewUserChosen = true;
-            createNewUser();
         }
     }
 
     private void login(){
-        
+        userInputUsername.drawBox();
+        userInputPassword.drawBox();
     }
 
     private void createNewUser(){
 
+    }
+
+    private class UserInputBox{
+        private String userInput = "";
+        private String message = "";
+        private int x, y, w, h;
+        private boolean pressed = false;
+        private boolean keyIsNotPressed = true;
+        private UserInputBox(int x, int y, int w, int  h, String message){
+            this.x = x;
+            this.y = y;
+            this.w = w;
+            this.h = h;
+            this.message += message;
+        }
+
+        private void drawBox(){
+            sketch.textFont(menuFont);
+            sketch.rectMode(sketch.CENTER);
+            isPressed();
+            if(pressed){
+                sketch.fill(255,200);
+                sketch.rect(x, y, w, h, 40);
+                sketch.fill(0);
+                sketch.textAlign(sketch.CENTER);
+                sketch.text(userInput, x, y+(h/4));
+            } else {
+                sketch.fill(255, 150);
+                sketch.rect(x, y, w, h, 40);
+                sketch.fill(0);
+                sketch.text(message, x, y + (h/4));
+            }
+
+            if(sketch.keyPressed && keyIsNotPressed){
+                sketch.fill(0);
+                keyPressed(sketch.key);
+                keyIsNotPressed = false;
+            }
+            if(!sketch.keyPressed && !keyIsNotPressed){
+                keyIsNotPressed = true;
+            }
+        }
+
+        private String typedInBox(){
+            return userInput;
+        }
+
+        private void isPressed(){
+            if(sketch.mousePressed && sketch.mouseX > (x-(w/2)) && sketch.mouseX < (x+(w/2)) && sketch.mouseY > (y-(h/2)) && sketch.mouseY < (y+(h/2))){
+                this.pressed = true;
+            } else if(sketch.mousePressed){
+                this.pressed = false;
+            }
+        }
+
+        private void keyPressed(char key){
+            if(pressed) {
+                if (key >= 'A' && key <= 'Z') {
+                    userInput += sketch.key;
+                }
+            }
+        }
     }
 }
