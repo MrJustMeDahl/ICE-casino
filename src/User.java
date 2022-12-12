@@ -11,7 +11,7 @@ public class User {
         this.password = password;
         this.balance = balance;
     }
-
+/*
     public int makeBet(int betSize){
         this.balance = this.balance - betSize;
         DatabaseIO.updateUserBalance(userID, balance);
@@ -23,5 +23,5 @@ public class User {
         DatabaseIO.updateUserBalance(userID, balance);
         return balance;
     }
-
+*/
 }
