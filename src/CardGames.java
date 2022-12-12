@@ -1,4 +1,4 @@
-public abstract class CardGames {
+public abstract class CardGames implements AllGames{
 
     private boolean hasWon;
     private String name;
@@ -10,4 +10,28 @@ public abstract class CardGames {
 
     }
 
+    @Override
+    public void startGame() {
+
+    }
+
+    @Override
+    public void stopGame() {
+
+    }
+
+    @Override
+    public void chooseBet() {
+
+    }
+
+    @Override
+    public void calculatePrizeMoney() {
+
+    }
+
+    @Override
+    public void newRound() {
+
+    }
 }
