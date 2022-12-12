@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static java.lang.Thread.sleep;
-
+/*
 public class ProgramControl {
 
     public static User currentUser;
@@ -41,3 +41,4 @@ public class ProgramControl {
         }
     }
 }
+*/

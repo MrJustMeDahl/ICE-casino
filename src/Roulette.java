@@ -1,29 +1,24 @@
 import processing.core.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 import static java.lang.Thread.sleep;
 
 
 
 public class Roulette extends PApplet {
-PFont f;
-ArrayList<Textbox> textboxes = new ArrayList<Textbox>();
-RouletteWheel wheel = new RouletteWheel();
+    PFont f;
+    ArrayList<Textbox> textboxes = new ArrayList<Textbox>();
+    RouletteWheel readWheelData = new RouletteWheel();
+    int rectX = height/2+1200;
+    int rectY = width/2+130;
 
+//******
+// Roulette constructor
+//******
+       public void runRoulette(){
 
-//    ArrayList<User> allUsers;
-
- /*   public Roulette(ArrayList<User> allUsers) {
-        this.allUsers = allUsers;
-    }
-*/
-
- //   public void runRoulette(){
-
-
-//        PImage image1;
-//        PImage image2;
-
+       }
 //*******
 //Creating the Processing window size
 //*******
@@ -37,10 +32,11 @@ RouletteWheel wheel = new RouletteWheel();
         public void setup(){
             background(0,55,0);
 
-            image (loadImage("Data/Roulette.jpeg"), height/6,width/15);
-            image (loadImage("Data/BettingRoulette.jpeg"), height/2+400, width/2-900);
+
+            image (loadImage("Pictures/RoulettePictures/Roulette.jpeg"), height/6,width/15);
+//            image (loadImage("RoulettePictures/BettingRoulette.jpeg"), height/2+400, width/2-900);
             f = createFont("Times New Roman",16);
-            initLayout();
+
 
 
 
@@ -50,38 +46,73 @@ RouletteWheel wheel = new RouletteWheel();
 //Running the program
 //*******
 
-        public void draw(){
-            textFont(f,16);
-            fill(0);
-            rect(height/2+310,width/2-950,200,80);
+        public void draw() {
+//******
+// Setting a displaybox in the top center
+//******
+            textFont(f, 16);
+            fill(0,0,0,127);
+            rect(height / 2 + 310, width / 2 - 950, 200, 80);
             fill(255);
-            text ("Press 'Enter' to finalize bet(s)\n And start the spin  ", height/2+315,width/2-920);
+            text("Press 'Enter' to finalize bet(s)\n And start the spin  ", height / 2 + 315, width / 2 - 920);
 
-            for (Textbox t: textboxes){
-                t.DRAW();
+//******
+// Setting a textbox in the lower left corner
+//******
+
+        fill(0,0,0,127);
+        rect(height/6+50,width/15+680,500,230,100);
+
+
+//******
+// Betting buttons
+//******
+        fill(150,150,150,191);
+        rect(rectX,rectY,75,75);
+
+
+
+
+
+
+//*******
+// Exiting the game
+//*******
+            if (keyPressed){
+
+                if(key == 'q' || key == 'Q'){
+                    System.out.println("Quiting program" );
+                    exit();
+                }
             }
-
+        }
+//******
 // Place bet on table - run placeBet()
-/*
+//******
+   /*
           if (User.balance >= 20){
               placeBet();
             }
           else{
                 System.out.println("You don't have enough credits to place a bet");
             }
-*/
+    */
+//******
 // make the visual roulette magic
-
-
-
-// run rouletteRules()
+//******
+            public Roulettefields spinTheWheel(){
+                Random random = new Random();
+                int index = random.nextInt(readWheelData.getWheelData().size());
+                Roulettefields field = readWheelData.getWheelData().get(index);
+                return field;
+            }
 
 
 //*******
 // check if the user is wins or not
 // payout prizemoney or deduct loss from user balance
 //*******
-/*
+    /*
           if ( placeBet == result){
               payOut();
           }
@@ -94,61 +125,7 @@ RouletteWheel wheel = new RouletteWheel();
 
               }
           }
-*/
-
-//*******
-// Exiting the game
-//*******
-            if (keyPressed){
-
-                if(key == 'q' || key == 'Q'){
-                    System.out.println("Quiting program" );
-                    //Code to run choose a game
-                }
-            }
-
-
-
-            }
-
-
-
-//*******
-//The Texbox method
-//*******
-        void initLayout(){
-            Textbox message = new Textbox();
-            message.W = 400;
-            message.H = 200;
-            message.X = width/15+650;
-            message.Y = height/5-50;
-
-            Textbox input = new Textbox();
-            input.W = 400;
-            input.H = 200;
-            input.X = width/15+1050;
-            input.Y = height/5+150;
-
-            textboxes.add(message);
-
-        }
-
-
-
-
-
-
-
-
-//    }
-/*
-   private int placeBet( User.makeBet()){
-
-
-
-        return makeBet;
-    }
-*/
+    */
 
 //*******
 //Runs the Roulette Algorithm

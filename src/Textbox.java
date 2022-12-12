@@ -9,7 +9,7 @@ public class Textbox extends PApplet {
 //    public color background = color(140,140,140);
 //    public color foreground = color(0,0,0);
 //    public color backgroundSelected = color(160,160,160);
-//   public color border = color(30,30,30);
+//    public color border = color(30,30,30);
 
     public boolean BorderEnable = false;
     public int BorderWeight = 1;
