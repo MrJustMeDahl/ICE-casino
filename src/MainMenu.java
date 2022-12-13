@@ -6,7 +6,7 @@ public class MainMenu {
     private PFont userInfoFont;
     public static boolean mainMenuRunning = true;
 
-    public MainMenu(PApplet sketch, ProgramControl pc){
+    public MainMenu(PApplet sketch){
         this.sketch = sketch;
         this.img = sketch.loadImage("Pictures/Menu images/MainMenu_background.jpg");
         this.userInfoFont = sketch.createFont("Georgia", 25);
@@ -17,8 +17,8 @@ public class MainMenu {
             sketch.image(img, 0, 0, 1240, 780);
             seeUserInfo();
             addBalance();
-            chooseGame();
             logout();
+            chooseGame();
         }
     }
 
@@ -67,19 +67,21 @@ public class MainMenu {
         sketch.rect(sketch.width/2, sketch.height/2-100, 200, 60, 40);
         sketch.rect(sketch.width/2, sketch.height/2-30, 200,60, 40);
         if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 100 && sketch.mouseX < sketch.width/2 + 100 && sketch.mouseY > sketch.height/2 - 200 && sketch.mouseY < sketch.height/2 - 140){
-            System.out.println("Box 1 pressed");
-            Roulette roulette = new Roulette();
+            /*Roulette roulette = new Roulette();
             roulette.startGame();
+
+             */
         }
         if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 100 && sketch.mouseX < sketch.width/2 + 100 && sketch.mouseY > sketch.height/2 - 130 && sketch.mouseY < sketch.height/2 - 70){
-            System.out.println("Box 2 pressed");
-            BlackJack blackJack = new BlackJack();
+            BlackJack blackJack = new BlackJack("Blackjack", new CardDeck(10, 4, true, true),sketch);
             blackJack.startGame();
+            mainMenuRunning = false;
         }
         if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 100 && sketch.mouseX < sketch.width/2 + 100 && sketch.mouseY > sketch.height/2 - 60 && sketch.mouseY < sketch.height/2){
-            System.out.println("Box 3 pressed");
-            Craps craps = new Craps();
+            /*Craps craps = new Craps();
             craps.startGame();
+
+             */
         }
     }
 }

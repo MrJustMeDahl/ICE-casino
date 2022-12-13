@@ -10,7 +10,7 @@ public class Main extends PApplet {
         PApplet.runSketch(processingArgs, ICE_CASINO);
     }
     public void setup(){
-        this.mainMenu = new MainMenu(this, pc);
+        this.mainMenu = new MainMenu(this);
         this.pc = new ProgramControl(this, mainMenu);
     }
     public void settings(){
