@@ -1,20 +1,23 @@
-public class Card extends CardGames{
+public class Card{
 
     private String name;
     private String suits;
     private int value;
 
-    public Card(boolean hasWon, String name, String suits, int value){
-        super(hasWon, name);
+    public Card(String suits, int value){
         this.suits = suits;
         this.value = value;
     }
 
-
-    public String getName() {
-        return name;
+    public Card(String name, String suits, int value){
+        this.name = name;
+        this.suits = suits;
+        this.value = value;
     }
 
+    public String getName(){
+        return name;
+    }
     public String getSuits() {
         return suits;
     }

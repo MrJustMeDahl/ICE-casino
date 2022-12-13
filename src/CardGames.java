@@ -1,37 +1,21 @@
 public abstract class CardGames implements AllGames{
 
-    private boolean hasWon;
+    private boolean hasWon = false;
     private String name;
-    private CardDeck currenDeck;
+    private CardDeck currentDeck;
 
-    public CardGames(boolean hasWon, String name){
-        this.hasWon = hasWon;
+    public CardGames(String name){
         this.name = name;
 
     }
 
-    @Override
-    public void startGame() {
+    public abstract void startGame();
 
-    }
+    public abstract void stopGame();
 
-    @Override
-    public void stopGame() {
+    public abstract void chooseBet();
 
-    }
+    public abstract void calculatePrizeMoney();
 
-    @Override
-    public void chooseBet() {
-
-    }
-
-    @Override
-    public void calculatePrizeMoney() {
-
-    }
-
-    @Override
-    public void newRound() {
-
-    }
+    public abstract void newRound();
 }
