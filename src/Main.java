@@ -1,5 +1,5 @@
 import processing.core.*;
-/*
+
 public class Main extends PApplet {
     private ProgramControl pc;
     private MainMenu mainMenu;
@@ -21,4 +21,3 @@ public class Main extends PApplet {
         this.pc.runCasino();
     }
 }
-*/
