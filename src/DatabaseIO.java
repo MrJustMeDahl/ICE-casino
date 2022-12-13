@@ -1,7 +1,4 @@
-import com.mysql.jdbc.jdbc2.optional.JDBC4PreparedStatementWrapper;
-
 import java.sql.*;
-
 
 public class DatabaseIO {
 
@@ -72,7 +69,15 @@ public class DatabaseIO {
 
     public void updateUserBalance(int userID, int balance){
         establishConnection();
-
+        String query = "UPDATE ice.userdata SET userBalance=? WHERE idUserData = ?";
+        try{
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, balance);
+            statement.setInt(2, userID);
+            statement.execute();
+        }catch (SQLException e){
+            throw new RuntimeException("Failed to update user balance");
+        }
         closeConnection();
     }
 }
