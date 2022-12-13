@@ -13,7 +13,7 @@ public void settings(){
     public void setup() {
 
             image(loadImage("Pictures/CrabsPictures/Craps_table_layout.jpeg"), height / 2, width / 2);
-            
+
     }
 
     public void draw() {
