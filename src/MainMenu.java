@@ -17,7 +17,7 @@ public class MainMenu {
             sketch.image(img, 0, 0, 1240, 780);
             seeUserInfo();
             addBalance();
-            //chooseGame();
+            chooseGame();
             logout();
         }
     }
@@ -57,6 +57,29 @@ public class MainMenu {
         if(sketch.mousePressed && sketch.mouseX > 150 - (125/2) && sketch.mouseX < 150 + (125/2) && sketch.mouseY > 740 - 25 && sketch.mouseY < 740 + 25){
             ProgramControl.loginSuccess = false;
             mainMenuRunning = false;
+        }
+    }
+
+    private void chooseGame(){
+        sketch.stroke(200, 200, 0);
+        sketch.fill(255, 0);
+        sketch.rect(sketch.width/2, sketch.height/2-170, 200, 60, 40);
+        sketch.rect(sketch.width/2, sketch.height/2-100, 200, 60, 40);
+        sketch.rect(sketch.width/2, sketch.height/2-30, 200,60, 40);
+        if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 100 && sketch.mouseX < sketch.width/2 + 100 && sketch.mouseY > sketch.height/2 - 200 && sketch.mouseY < sketch.height/2 - 140){
+            System.out.println("Box 1 pressed");
+            Roulette roulette = new Roulette();
+            roulette.startGame();
+        }
+        if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 100 && sketch.mouseX < sketch.width/2 + 100 && sketch.mouseY > sketch.height/2 - 130 && sketch.mouseY < sketch.height/2 - 70){
+            System.out.println("Box 2 pressed");
+            BlackJack blackJack = new BlackJack();
+            blackJack.startGame();
+        }
+        if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 100 && sketch.mouseX < sketch.width/2 + 100 && sketch.mouseY > sketch.height/2 - 60 && sketch.mouseY < sketch.height/2){
+            System.out.println("Box 3 pressed");
+            Craps craps = new Craps();
+            craps.startGame();
         }
     }
 }
