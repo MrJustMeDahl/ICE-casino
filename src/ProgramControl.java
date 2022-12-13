@@ -40,37 +40,14 @@ public class ProgramControl {
             displayOptions();
             chooseOption();
         }
-        if(loginChosen){
+        if(loginChosen) {
             login();
         }
-        /*Log in or make new user
-        if(mousePressed ) {
-            currentUser = login();
-            mainMenu.runMainMenu();
+        if(createNewUserChosen){
+            createNewUser();
         }
-        if(mousePressed ) {
-            currentUser = DatabaseIO.createNewUser();
-            mainMenu.runMainMenu();
-        }
-        */
+    }
 
-    }
-/*
-    private User login(){
-        //TODO: Run visual login screen
-        User user = DatabaseIO.loadUserData(username, password);
-        if(user == null){
-            //TODO: Display message on screen - login failed, please try again.
-            try {
-                sleep(1500);
-            } catch (InterruptedException e){
-                throw new RuntimeException("Sleep failed");
-            }
-            login();
-        }
-        return user;
-    }
- */
     private void runBackground(){
         sketch.image(this.img, 0,0, 1240, 780);
         sketch.textFont(this.welcomeFont);
@@ -122,14 +99,25 @@ public class ProgramControl {
     }
 
     private void login(){
+        boolean buttonPressed = false;
         userInputUsername.drawBox();
         userInputPassword.drawBox();
-        if(submitLogin(userInputUsername.typedInBox(), userInputPassword.typedInBox()) != null){
+        if(sketch.mousePressed && sketch.mouseX > (sketch.width/2 - 100) && sketch.mouseX < (sketch.width/2 + 100) && sketch.mouseY > ((sketch.height/2) - (135/2)) && sketch.mouseY < ((sketch.height/2) + (135/2))){
             currentUser = submitLogin(userInputUsername.typedInBox(), userInputPassword.typedInBox());
+            buttonPressed = true;
         }
-
-        if(currentUser != null){
-            mainMenu.runMainMenu();
+        if(currentUser != null && buttonPressed){
+            loginSuccess = true;
+        } else if(currentUser == null && buttonPressed){
+            sketch.fill(255,150);
+            sketch.rect(sketch.width/2, sketch.height/2, 500, 200);
+            sketch.textAlign(sketch.CENTER);
+            sketch.textFont(menuFont);
+            sketch.text("The username and password you've entered, does not match an existing account", sketch.width/2, sketch.height/2);
+            try{
+                sleep(3000);
+            } catch(InterruptedException e){
+            }
         }
     }
 
@@ -138,7 +126,7 @@ public class ProgramControl {
     }
 
     private User submitLogin(String username, String password){
-        User loggedInUser = null;
+        User loggedInUser = DatabaseIO.loadUserData(username, password);
         sketch.textFont(menuFont);
         sketch.textAlign(sketch.CENTER);
         sketch.rectMode(sketch.CENTER);
@@ -147,9 +135,6 @@ public class ProgramControl {
         sketch.fill(0);
         sketch.textSize(25);
         sketch.text("Login", sketch.width/2, sketch.height/2 + 143);
-        if(sketch.mousePressed && sketch.mouseX > (sketch.width/2 - 100) && sketch.mouseX < (sketch.width/2 + 100) && sketch.mouseY > ((sketch.height/2) - (135/2)) && sketch.mouseY < ((sketch.height/2) + (135/2))){
-            loggedInUser = DatabaseIO.loadUserData(username, password);
-        }
         if(loggedInUser != null) {
             return loggedInUser;
         }
