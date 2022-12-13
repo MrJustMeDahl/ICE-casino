@@ -14,13 +14,13 @@ public class User {
 
     public int makeBet(int betSize){
         this.balance = this.balance - betSize;
-        DatabaseIO.updateUserBalance(userID, balance);
+        DatabaseIO.databaseIO.updateUserBalance(userID, balance);
         return this.balance;
     }
 
     public int receiveMoney(int money){
         this.balance = this.balance + money;
-        DatabaseIO.updateUserBalance(userID, balance);
+        DatabaseIO.databaseIO.updateUserBalance(userID, balance);
         return balance;
     }
 
