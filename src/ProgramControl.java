@@ -15,7 +15,7 @@ public class ProgramControl {
     private ArrayList<String> allGames;
     boolean loginChosen = false;
     boolean createNewUserChosen = false;
-    boolean loginSuccess = false;
+    boolean loginSuccess = true;
     public ProgramControl(PApplet sketch, MainMenu mainMenu){
         this.sketch = sketch;
         this.allGames = new ArrayList<>(Arrays.asList("BlackJack", "Craps", "Roulette"));
