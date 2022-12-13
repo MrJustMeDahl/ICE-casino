@@ -21,7 +21,7 @@ public class ProgramControl {
     public ProgramControl(PApplet sketch, MainMenu mainMenu){
         this.sketch = sketch;
         this.allGames = new ArrayList<>(Arrays.asList("BlackJack", "Craps", "Roulette"));
-        this.img = sketch.loadImage("Menu images/Loginbackground.jpg");
+        this.img = sketch.loadImage("Pictures/Menu images/Loginbackground.jpg");
         this.welcomeFont = sketch.createFont("Georgia", 80);
         this.menuFont = sketch.createFont("Georgia", 50);
         this.mainMenu = mainMenu;
