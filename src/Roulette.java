@@ -7,6 +7,8 @@ import static java.lang.Thread.sleep;
 
 
 public class Roulette extends PApplet {
+    float x = height/6+470;
+    float y = width/15+275;
     PFont f;
     RouletteWheel readWheelData = new RouletteWheel();
     int placeBet = 0;
@@ -17,6 +19,10 @@ public class Roulette extends PApplet {
 
     int textOutX = width/6+60;
     int textOutY = height/15+730;
+
+    int ballX;
+    int ballY;
+    float ballRadius;
 //******
 // Roulette constructor
 //******
@@ -37,13 +43,10 @@ public class Roulette extends PApplet {
             background(0,55,0);
             image (loadImage("Pictures/RoulettePictures/Roulette.jpeg"), height/6,width/15);
             f = createFont("Times New Roman",16);
-
-
 //******
-// Array of bettingbuttons
+//RouletteBall
 //******
-
-
+           // int radius = min(height/6,width/15);
 
         }
 
@@ -62,6 +65,24 @@ public class Roulette extends PApplet {
             text("Press 'Enter' to finalize bet(s)\n And start the spin\n press 'q' to quit  ", height / 2 + 315, width / 2 - 920);
 
 //******
+//Draw the ball
+//******
+
+          ellipseMode(CENTER);
+/*
+            float steps = 38;
+            float x = height/6+470;
+            float y = width/15+275;
+            for (int i = 0; i <= steps; i++){
+              float t = i /(steps);
+              x = curvePoint(x,x+25,x+50,x+72,t);
+              y = curvePoint(y,y+5,y+10,y+17,t);
+              ellipse(x,y,10,10);
+          }
+*/
+
+           circle(x,y,10);
+//******
 // Setting a textbox in the lower left corner
 //******
 
@@ -70,7 +91,7 @@ public class Roulette extends PApplet {
 
 
 //******
-// Betting buttons
+// Array of Betting buttons
 //******
 
             fill(150,150,150,191);
@@ -91,6 +112,49 @@ public class Roulette extends PApplet {
             }
         rectX = height/2+1200;
         rectY = width/2+130;
+
+//******
+//Red bet button
+//******
+
+        fill(120,0,0,191);
+        rect(height/2+1050, width/2-700,75,200,100);
+        fill(255);
+        text("RED",height/2+1070,width/2-600);
+//******
+//Black bet button
+//******
+        fill(0,0,0,191);
+        rect(height/2+1050,width/2-400,75,200,100);
+        fill(255);
+        text("BLACK",height/2+1060,width/2-300);
+
+//******
+//Odd bet button
+//*****
+
+        fill (0,100,0,191);
+        rect (height/2+617,width/2-700,75,200,100);
+        fill(255);
+        text("ODD",height/2+637,width/2-600);
+
+//******
+//even bet button
+//*****
+
+            fill (0,100,0,191);
+            rect (height/2+617,width/2-400,75,200,100);
+            fill(255);
+            text("EVEN",height/2+632,width/2-300);
+
+//******
+//zero bet button
+//*****
+
+            fill (0,100,0,191);
+            rect (height/2+750,width/2-850,237,50,100);
+            fill(255);
+            text("0",height/2+863,width/2-820);
 
 
 //*******
