@@ -12,12 +12,18 @@ public class ProgramControl {
     private MainMenu mainMenu;
     public static User currentUser;
     private ArrayList<String> allGames;
+<<<<<<< HEAD
+    boolean loginChosen = false;
+    boolean createNewUserChosen = false;
+    boolean loginSuccess = true;
+=======
     private boolean loginChosen = false;
     private boolean createNewUserChosen = false;
     private boolean loginSuccess = false;
     private UserInputBox userInputUsername;
     private UserInputBox userInputPassword;
 
+>>>>>>> master
     public ProgramControl(PApplet sketch, MainMenu mainMenu){
         this.sketch = sketch;
         this.allGames = new ArrayList<>(Arrays.asList("BlackJack", "Craps", "Roulette"));
