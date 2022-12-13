@@ -12,7 +12,7 @@ public class ProgramControl {
     private ArrayList<String> allGames;
     private boolean loginChosen = false;
     private boolean createNewUserChosen = false;
-    private boolean loginSuccess = false;
+    public static boolean loginSuccess = false;
     private boolean showErrorMessasge = false;
     private UserInputBox userInputUsername;
     private UserInputBox userInputPassword;
@@ -116,9 +116,12 @@ public class ProgramControl {
         if(sketch.mousePressed && sketch.mouseX > (sketch.width/2 - 100) && sketch.mouseX < (sketch.width/2 + 100) && sketch.mouseY > ((sketch.height/2) + 150 - (135/2)) && sketch.mouseY < ((sketch.height/2) + 150 + (135/2))){
             currentUser = submitLogin(userInputUsername.typedInBox(), userInputPassword.typedInBox());
             buttonPressed = true;
+            userInputUsername.resetInput();
+            userInputPassword.resetInput();
         }
         if(currentUser != null && buttonPressed){
             loginSuccess = true;
+            MainMenu.mainMenuRunning = true;
             loginChosen = false;
         } else if(currentUser == null && buttonPressed){
             sketch.fill(255);
@@ -163,9 +166,12 @@ public class ProgramControl {
             DatabaseIO.databaseIO.writeToUserData(usernameCreateUserBox.typedInBox(), passwordCreateUserBox.typedInBox());
             currentUser = submitLogin(usernameCreateUserBox.typedInBox(), passwordCreateUserBox.typedInBox());
             buttonPressed = true;
+            usernameCreateUserBox.resetInput();
+            passwordCreateUserBox.resetInput();
         }
         if(currentUser != null && buttonPressed){
             loginSuccess = true;
+            MainMenu.mainMenuRunning = true;
             createNewUserChosen = false;
         }
     }
@@ -245,6 +251,10 @@ public class ProgramControl {
                     }
                 }
             }
+        }
+
+        private void resetInput(){
+            userInput = "";
         }
     }
 }
