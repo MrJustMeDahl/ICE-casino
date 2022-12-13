@@ -7,20 +7,18 @@ public class Crabs extends PApplet {
     }
     PImage img;
 
+public void settings(){
+    size(900,900);
+}
+    public void setup() {
 
-    public void setup(){
-        size(400,400);
-        img = loadImage("Craps_table_layout.svg.png");
-
-        image(loadImage("C:\\Users\\techn\\OneDrive\\Skrivebord\\Ice\\Pictures\\Craps_table_layout.svg.png"), height/2, width/2);
-
-
+            image(loadImage("Pictures/CrabsPictures/Craps_table_layout.jpeg"), height / 2, width / 2);
+            
     }
 
     public void draw() {
-background(0);
 
-        image(img, 0, 0);
+
 
 
     }
