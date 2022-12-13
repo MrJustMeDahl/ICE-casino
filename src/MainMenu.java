@@ -7,7 +7,7 @@ public class MainMenu {
 
     public MainMenu(PApplet sketch){
         this.sketch = sketch;
-        this.img = sketch.loadImage("Menu images/MainMenu_background.jpg");
+        this.img = sketch.loadImage("Pictures/Menu images/MainMenu_background.jpg");
     }
 
     public void runMainMenu(){
