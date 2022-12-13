@@ -2,7 +2,7 @@ public abstract class CardGames implements AllGames{
 
     private boolean hasWon;
     private String name;
-    CardDeck currenDeck;
+    private CardDeck currenDeck;
 
     public CardGames(boolean hasWon, String name){
         this.hasWon = hasWon;
