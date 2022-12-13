@@ -14,6 +14,8 @@ AllGames <|-- MiscGames
 DiceGames <|-- Craps
 MiscGames <|-- Roulette
 CardGames <|-- BlackJack
+Roulette *-- RouletteWheel
+RouletteWheel *-- Roulettefields
 
 class Main
 class User{
@@ -127,6 +129,27 @@ class DatabaseIO{
 + loadUserData()
 + createNewUser()
 + updateUserBalance()
+
+}
+
+class RouletteWheel{
+- int value
+- String color
+- ArrayList<String> wheelData
++ void Wheel()
++ int getvalue()
++ String getcolor()
++ ArrayList<String> readWheelData()
+
+}
+
+class Roulettefields{
+- int ID
+- int value
+- int color
+- boolean even
+
++ Roulettefields()
 
 }
 
