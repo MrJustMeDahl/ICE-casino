@@ -24,4 +24,11 @@ public class User {
         return balance;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
 }
