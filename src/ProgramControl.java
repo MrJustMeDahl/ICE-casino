@@ -1,5 +1,4 @@
 import processing.core.*;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -125,14 +124,41 @@ public class ProgramControl {
     private void login(){
         userInputUsername.drawBox();
         userInputPassword.drawBox();
+        if(submitLogin(userInputUsername.typedInBox(), userInputPassword.typedInBox()) != null){
+            currentUser = submitLogin(userInputUsername.typedInBox(), userInputPassword.typedInBox());
+        }
+
+        if(currentUser != null){
+            mainMenu.runMainMenu();
+        }
     }
 
     private void createNewUser(){
 
     }
 
+    private User submitLogin(String username, String password){
+        User loggedInUser = null;
+        sketch.textFont(menuFont);
+        sketch.textAlign(sketch.CENTER);
+        sketch.rectMode(sketch.CENTER);
+        sketch.fill(255, 150);
+        sketch.rect(sketch.width / 2, sketch.height / 2 + 135, 200, 40, 40);
+        sketch.fill(0);
+        sketch.textSize(25);
+        sketch.text("Login", sketch.width/2, sketch.height/2 + 143);
+        if(sketch.mousePressed && sketch.mouseX > (sketch.width/2 - 100) && sketch.mouseX < (sketch.width/2 + 100) && sketch.mouseY > ((sketch.height/2) - (135/2)) && sketch.mouseY < ((sketch.height/2) + (135/2))){
+            loggedInUser = DatabaseIO.loadUserData(username, password);
+        }
+        if(loggedInUser != null) {
+            return loggedInUser;
+        }
+        return loggedInUser;
+    }
+
     private class UserInputBox{
         private String userInput = "";
+        private int userInputLength = 0;
         private String message = "";
         private int x, y, w, h;
         private boolean pressed = false;
@@ -186,8 +212,15 @@ public class ProgramControl {
 
         private void keyPressed(char key){
             if(pressed) {
-                if (key >= 'A' && key <= 'Z') {
-                    userInput += sketch.key;
+                if ((key >= 'A' && key <= 'Z') || (key >= 'a' && key <= 'z') || (key >= '0' && key <= '9')) {
+                    this.userInput += sketch.key;
+                    userInputLength++;
+                }
+                if(sketch.key == sketch.BACKSPACE){
+                    if(this.userInput.length() > 0) {
+                        this.userInput = this.userInput.substring(0, userInputLength - 1);
+                        userInputLength--;
+                    }
                 }
             }
         }
