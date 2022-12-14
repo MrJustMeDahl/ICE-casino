@@ -4,9 +4,9 @@ public class MainMenu {
     private PApplet sketch;
     private PImage img;
     private PFont userInfoFont;
-    public static boolean mainMenuRunning = true;
+    public static boolean mainMenuRunning = false;
 
-    public MainMenu(PApplet sketch, ProgramControl pc){
+    public MainMenu(PApplet sketch){
         this.sketch = sketch;
         this.img = sketch.loadImage("Pictures/Menu images/MainMenu_background.jpg");
         this.userInfoFont = sketch.createFont("Georgia", 25);
@@ -14,11 +14,11 @@ public class MainMenu {
 
     public void runMainMenu(){
         if(mainMenuRunning) {
-            sketch.image(img, 0, 0, 1240, 780);
+            sketch.image(img, 0, 0, 1600, 900);
             seeUserInfo();
             addBalance();
-            chooseGame();
             logout();
+            chooseGame();
         }
     }
 
@@ -50,11 +50,11 @@ public class MainMenu {
 
     private void logout(){
         sketch.fill(255, 150);
-        sketch.rect(150, 740, 125, 50, 40);
+        sketch.rect(150, 840, 125, 50, 40);
         sketch.textSize(18);
         sketch.fill(0);
-        sketch.text("Log out", 150, 745);
-        if(sketch.mousePressed && sketch.mouseX > 150 - (125/2) && sketch.mouseX < 150 + (125/2) && sketch.mouseY > 740 - 25 && sketch.mouseY < 740 + 25){
+        sketch.text("Log out", 150, 845);
+        if(sketch.mousePressed && sketch.mouseX > 150 - (125/2) && sketch.mouseX < 150 + (125/2) && sketch.mouseY > 840 - 25 && sketch.mouseY < 840 + 25){
             ProgramControl.loginSuccess = false;
             mainMenuRunning = false;
         }
@@ -63,23 +63,24 @@ public class MainMenu {
     private void chooseGame(){
         sketch.stroke(200, 200, 0);
         sketch.fill(255, 0);
-        sketch.rect(sketch.width/2, sketch.height/2-170, 200, 60, 40);
-        sketch.rect(sketch.width/2, sketch.height/2-100, 200, 60, 40);
-        sketch.rect(sketch.width/2, sketch.height/2-30, 200,60, 40);
-        if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 100 && sketch.mouseX < sketch.width/2 + 100 && sketch.mouseY > sketch.height/2 - 200 && sketch.mouseY < sketch.height/2 - 140){
-            System.out.println("Box 1 pressed");
-            Roulette roulette = new Roulette();
+        sketch.rect(sketch.width/2, sketch.height/2-190, 250, 65, 40);
+        sketch.rect(sketch.width/2, sketch.height/2-110, 250, 65, 40);
+        sketch.rect(sketch.width/2, sketch.height/2-30, 250,65, 40);
+        if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 125 && sketch.mouseX < sketch.width/2 + 125 && sketch.mouseY > sketch.height/2 - 190 - (65/2) && sketch.mouseY < sketch.height/2 - 190 + (65/2)){
+            /*Roulette roulette = new Roulette();
             roulette.startGame();
+
+             */
         }
-        if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 100 && sketch.mouseX < sketch.width/2 + 100 && sketch.mouseY > sketch.height/2 - 130 && sketch.mouseY < sketch.height/2 - 70){
-            System.out.println("Box 2 pressed");
-            BlackJack blackJack = new BlackJack();
-            blackJack.startGame();
+        if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 125 && sketch.mouseX < sketch.width/2 + 125 && sketch.mouseY > sketch.height/2 - 110 -(65/2) && sketch.mouseY < sketch.height/2 - 110 + (65/2)){
+            BlackJack.blackjackRunning = true;
+            mainMenuRunning = false;
         }
-        if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 100 && sketch.mouseX < sketch.width/2 + 100 && sketch.mouseY > sketch.height/2 - 60 && sketch.mouseY < sketch.height/2){
-            System.out.println("Box 3 pressed");
-            Craps craps = new Craps();
+        if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 125 && sketch.mouseX < sketch.width/2 + 125 && sketch.mouseY > sketch.height/2 - 30 - (65/2) && sketch.mouseY < sketch.height/2 - 30 + (65/2)){
+            /*Craps craps = new Craps();
             craps.startGame();
+
+             */
         }
     }
 }
