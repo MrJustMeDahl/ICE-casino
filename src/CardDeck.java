@@ -14,7 +14,7 @@ public class CardDeck{
         this.suits = suits;
         this.aces = aces;
         this.pictureCards = pictureCards;
-        this.cardAmount = highestCardValue * suits;
+        this.cardAmount = (highestCardValue * suits) - (1 * suits);
         if(aces){
             this.cardAmount += suits;
         }

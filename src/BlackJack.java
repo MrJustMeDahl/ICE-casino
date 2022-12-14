@@ -20,7 +20,7 @@ public class BlackJack extends CardGames{
             if(!betMade) {
                 chooseBet();
             } else {
-                //runGame();
+                runGame();
             }
             stopGame();
         }
@@ -72,6 +72,7 @@ public class BlackJack extends CardGames{
         sketch.text("Make bet", 150, 485);
         if(sketch.mousePressed && sketch.mouseX > 50 && sketch.mouseX < 250 && sketch.mouseY > 450 && sketch.mouseY < 500){
             betMade = true;
+            ProgramControl.currentUser.makeBet(betAmount);
         }
     }
 
@@ -93,5 +94,29 @@ public class BlackJack extends CardGames{
         sketch.textFont(menuFont);
         sketch.fill(0);
         sketch.text("You are now playing\n" + name + "\nCash:\n" + ProgramControl.currentUser.getBalance() + "", 150, 50);
+    }
+
+    private void runGame(){
+        drawPlayingLayout();
+        currentDeck.shuffleCards();
+        
+    }
+
+    private void drawPlayingLayout(){
+        sketch.fill(0,200,0,150);
+        sketch.rect(150, 350, 200, 120, 40);
+        sketch.fill(200, 0, 0, 150);
+        sketch.rect(150, 600, 200, 120, 40);
+        sketch.fill(255, 150);
+        sketch.rect(sketch.width/2 + 100, 610, 300, 28, 40);
+        sketch.rect(sketch.width/2 + 100, 750, 1100, 250, 40);
+        sketch.rect(sketch.width/2 + 100, 150, 1100, 250, 40);
+        sketch.rect(sketch.width/2 + 100, 290, 300, 28, 40);
+        sketch.fill(0);
+        sketch.textSize(30);
+        sketch.text("Hit", 150, 365);
+        sketch.text("Stand", 150, 615);
+        sketch.text("Your cards:", sketch.width/2 + 100, 620);
+        sketch.text("Dealer's Cards:", sketch.width/2 + 100, 300);
     }
 }
