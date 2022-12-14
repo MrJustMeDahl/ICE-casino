@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8940c59d-a668-4e96-aadf-b4e21aa6ba3a" name="Changes" comment="Changed Roulette class, removed textbox, changed UML">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13-12-2022_10_38__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Crabs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Crabs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AllGames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AllGames.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CardDeck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CardDeck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CardGames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CardGames.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,14 +74,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.Crabs">
-    <configuration name="Crabs" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Crabs" />
-      <module name="ICE-casino" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="ICE-casino" />
@@ -95,11 +89,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Application.Main" />
-      <item itemvalue="Application.Crabs" />
-      <item itemvalue="Application.Roulette" />
-    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Roulette" />
@@ -118,8 +107,6 @@
       <workItem from="1670410792050" duration="3653000" />
       <workItem from="1670620909071" duration="1198000" />
       <workItem from="1670688091468" duration="781000" />
-      <workItem from="1670939647776" duration="1281000" />
-      <workItem from="1671019808325" duration="665000" />
     </task>
     <task id="LOCAL-00001" summary="updated UML">
       <created>1670411489850</created>

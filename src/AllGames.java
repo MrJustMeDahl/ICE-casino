@@ -1,13 +1,13 @@
 public interface AllGames {
 
-    public void startGame();
+    void startGame();
 
-    public void stopGame();
+    void stopGame();
 
-    public void chooseBet();
+    void chooseBet();
 
-    public void calculatePrizeMoney();
+    void calculatePrizeMoney();
 
-    public void newRound();
+    void newRound();
 
 }
