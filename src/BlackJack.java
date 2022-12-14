@@ -1,5 +1,7 @@
 import processing.core.*;
 
+import java.util.ArrayList;
+
 public class BlackJack extends CardGames{
     public static boolean blackjackRunning = false;
     private PImage img;
@@ -83,7 +85,7 @@ public class BlackJack extends CardGames{
 
     @Override
     public void newRound() {
-
+        currentDeck.addUsedCards();
     }
 
     private void displayUserInfo() {
@@ -99,7 +101,15 @@ public class BlackJack extends CardGames{
     private void runGame(){
         drawPlayingLayout();
         currentDeck.shuffleCards();
-        
+        ArrayList<Card> playerHand = new ArrayList<>();
+        ArrayList<Card> dealerHand = new ArrayList<>();
+        int startHand = 2;
+        while (playerHand.size() < startHand && dealerHand.size() < startHand) {
+            playerHand.add(currentDeck.drawTopCard());
+            dealerHand.add(currentDeck.drawTopCard());
+        }
+        displayHands();
+        newRound();
     }
 
     private void drawPlayingLayout(){
@@ -118,5 +128,10 @@ public class BlackJack extends CardGames{
         sketch.text("Stand", 150, 615);
         sketch.text("Your cards:", sketch.width/2 + 100, 620);
         sketch.text("Dealer's Cards:", sketch.width/2 + 100, 300);
+    }
+
+    private void displayHands(){
+        int cardPlacement = 475;
+
     }
 }

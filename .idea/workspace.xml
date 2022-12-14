@@ -74,6 +74,13 @@
   }
 }</component>
   <component name="RunManager" selected="Application.Main">
+    <configuration name="Crabs" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Crabs" />
+      <module name="ICE-casino" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="ICE-casino" />
@@ -90,6 +97,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Crabs" />
         <item itemvalue="Application.Roulette" />
         <item itemvalue="Application.Roulette" />
       </list>

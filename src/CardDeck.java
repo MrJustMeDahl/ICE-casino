@@ -46,8 +46,8 @@ public class CardDeck{
     public void addUsedCards(){
         for(Card c : usedCards){
             cards.add(c);
-            usedCards.remove(c);
         }
+        usedCards.removeAll(usedCards);
     }
 
     private ArrayList<Card> fillCardDeck(){
