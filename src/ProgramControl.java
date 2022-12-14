@@ -2,8 +2,6 @@ import processing.core.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static java.lang.Thread.sleep;
-
 public class ProgramControl {
     private PApplet sketch;
     private PImage img;
@@ -12,18 +10,16 @@ public class ProgramControl {
     private MainMenu mainMenu;
     public static User currentUser;
     private ArrayList<String> allGames;
-<<<<<<< HEAD
-    boolean loginChosen = false;
-    boolean createNewUserChosen = false;
-    boolean loginSuccess = true;
-=======
     private boolean loginChosen = false;
     private boolean createNewUserChosen = false;
-    private boolean loginSuccess = false;
+    public static boolean loginSuccess = false;
+    private boolean showErrorMessasge = false;
     private UserInputBox userInputUsername;
     private UserInputBox userInputPassword;
+    private UserInputBox usernameCreateUserBox;
+    private UserInputBox passwordCreateUserBox;
 
->>>>>>> master
+
     public ProgramControl(PApplet sketch, MainMenu mainMenu){
         this.sketch = sketch;
         this.allGames = new ArrayList<>(Arrays.asList("BlackJack", "Craps", "Roulette"));
@@ -33,16 +29,17 @@ public class ProgramControl {
         this.mainMenu = mainMenu;
         this.userInputUsername = new UserInputBox(sketch.width / 2, sketch.height / 2 - 50, 500, 75, "Username");
         this.userInputPassword = new UserInputBox(sketch.width / 2, sketch.height / 2 + 50, 500, 75, "Password");
+        this.usernameCreateUserBox = new UserInputBox(sketch.width / 2, sketch.height / 2 - 50, 500, 75, "Username");
+        this.passwordCreateUserBox = new UserInputBox(sketch.width / 2, sketch.height / 2 + 50, 500, 75, "Password");
     }
 
     public void runCasino(){
-        //TODO: Run visual window
         if(!loginSuccess) {
             runBackground();
         } else {
             mainMenu.runMainMenu();
         }
-        if(!loginChosen && !createNewUserChosen) {
+        if(!loginChosen && !createNewUserChosen && !loginSuccess) {
             displayOptions();
             chooseOption();
         }
@@ -108,31 +105,6 @@ public class ProgramControl {
         boolean buttonPressed = false;
         userInputUsername.drawBox();
         userInputPassword.drawBox();
-        if(sketch.mousePressed && sketch.mouseX > (sketch.width/2 - 100) && sketch.mouseX < (sketch.width/2 + 100) && sketch.mouseY > ((sketch.height/2) - (135/2)) && sketch.mouseY < ((sketch.height/2) + (135/2))){
-            currentUser = submitLogin(userInputUsername.typedInBox(), userInputPassword.typedInBox());
-            buttonPressed = true;
-        }
-        if(currentUser != null && buttonPressed){
-            loginSuccess = true;
-        } else if(currentUser == null && buttonPressed){
-            sketch.fill(255,150);
-            sketch.rect(sketch.width/2, sketch.height/2, 500, 200);
-            sketch.textAlign(sketch.CENTER);
-            sketch.textFont(menuFont);
-            sketch.text("The username and password you've entered, does not match an existing account", sketch.width/2, sketch.height/2);
-            try{
-                sleep(3000);
-            } catch(InterruptedException e){
-            }
-        }
-    }
-
-    private void createNewUser(){
-
-    }
-
-    private User submitLogin(String username, String password){
-        User loggedInUser = DatabaseIO.loadUserData(username, password);
         sketch.textFont(menuFont);
         sketch.textAlign(sketch.CENTER);
         sketch.rectMode(sketch.CENTER);
@@ -141,6 +113,71 @@ public class ProgramControl {
         sketch.fill(0);
         sketch.textSize(25);
         sketch.text("Login", sketch.width/2, sketch.height/2 + 143);
+        if(sketch.mousePressed && sketch.mouseX > (sketch.width/2 - 100) && sketch.mouseX < (sketch.width/2 + 100) && sketch.mouseY > ((sketch.height/2) + 150 - (135/2)) && sketch.mouseY < ((sketch.height/2) + 150 + (135/2))){
+            currentUser = submitLogin(userInputUsername.typedInBox(), userInputPassword.typedInBox());
+            buttonPressed = true;
+            userInputUsername.resetInput();
+            userInputPassword.resetInput();
+        }
+        if(currentUser != null && buttonPressed){
+            loginSuccess = true;
+            MainMenu.mainMenuRunning = true;
+            loginChosen = false;
+        } else if(currentUser == null && buttonPressed){
+            sketch.fill(255);
+            sketch.rect(sketch.width/2, sketch.height/2, 550, 200, 40);
+            sketch.textAlign(sketch.CENTER);
+            sketch.textFont(menuFont);
+            sketch.textSize(25);
+            sketch.fill(0);
+            sketch.text("The username and password you've entered,\ndoes not match an existing account.\n Please try again.", sketch.width/2, sketch.height/2 - 20);
+            //showErrorMessasge = true;
+        }
+        /*if(showErrorMessasge){
+            int timer = sketch.millis();
+            while(timer < timer + 3000){
+                sketch.fill(255);
+                sketch.rect(sketch.width/2, sketch.height/2, 500, 200);
+                sketch.textAlign(sketch.CENTER);
+                sketch.textFont(menuFont);
+                sketch.textSize(25);
+                sketch.fill(0);
+                sketch.text("The username and password you've entered, \ndoes not match an existing account.\n Please try again.", sketch.width/2, sketch.height/2);
+                showErrorMessasge = false;
+            }
+        }
+      */
+    }
+
+    private void createNewUser(){
+        boolean buttonPressed = false;
+        //TODO: Make sure users make new accounts correctly
+        usernameCreateUserBox.drawBox();
+        passwordCreateUserBox.drawBox();
+        sketch.textFont(menuFont);
+        sketch.textAlign(sketch.CENTER);
+        sketch.rectMode(sketch.CENTER);
+        sketch.fill(255, 150);
+        sketch.rect(sketch.width / 2, sketch.height / 2 + 135, 250, 40, 40);
+        sketch.fill(0);
+        sketch.textSize(25);
+        sketch.text("Create new account", sketch.width/2, sketch.height/2 + 143);
+        if(sketch.mousePressed && sketch.mouseX > (sketch.width/2 - 125) && sketch.mouseX < (sketch.width/2 + 125) && sketch.mouseY > ((sketch.height/2) + 150 - (135/2)) && sketch.mouseY < ((sketch.height/2) + 150 + (135/2))){
+            DatabaseIO.databaseIO.writeToUserData(usernameCreateUserBox.typedInBox(), passwordCreateUserBox.typedInBox());
+            currentUser = submitLogin(usernameCreateUserBox.typedInBox(), passwordCreateUserBox.typedInBox());
+            buttonPressed = true;
+            usernameCreateUserBox.resetInput();
+            passwordCreateUserBox.resetInput();
+        }
+        if(currentUser != null && buttonPressed){
+            loginSuccess = true;
+            MainMenu.mainMenuRunning = true;
+            createNewUserChosen = false;
+        }
+    }
+
+    private User submitLogin(String username, String password){
+        User loggedInUser = DatabaseIO.databaseIO.loadUserData(username, password);
         if(loggedInUser != null) {
             return loggedInUser;
         }
@@ -178,7 +215,7 @@ public class ProgramControl {
                 sketch.fill(0);
                 sketch.text(message, x, y + (h/4));
             }
-
+            //TODO: Make writing in textboxes better
             if(sketch.keyPressed && keyIsNotPressed){
                 sketch.fill(0);
                 keyPressed(sketch.key);
@@ -214,6 +251,10 @@ public class ProgramControl {
                     }
                 }
             }
+        }
+
+        private void resetInput(){
+            userInput = "";
         }
     }
 }

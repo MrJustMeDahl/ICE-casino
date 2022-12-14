@@ -5,14 +5,16 @@ public class Crabs extends PApplet {
     public static void main(String[] args) {
         PApplet.main("Crabs");
     }
-    PImage img;
 
 public void settings(){
-    size(900,900);
+    size(1800,900);
+
 }
     public void setup() {
+        background(0);
+            image (loadImage("Pictures/CrabsPictures/Craps_table_layout.jpeg"), 250, 1);
 
-            image(loadImage("Pictures/CrabsPictures/Craps_table_layout.jpeg"), height / 2, width / 2);
+
 
     }
 
