@@ -7,23 +7,29 @@ import static java.lang.Thread.sleep;
 
 
 public class Roulette extends PApplet {
+    public static boolean rouletteRunning = false;
+    ArrayList<Bets> makeBet = new ArrayList<Bets>();
+    int betSize = 20;
+    int totalBetSize;
     boolean qPressed = false;
+    boolean enterPressed = false;
     int time;
+    int time2;
     boolean bDisplayMessage;
     int startTime;
     final int DISPLAY_DURATION = 3000;
-    float x = width/15+275;
-    float y = height/6+470;
+    float x = width / 15 + 275;
+    float y = height / 6 + 470;
     PFont f;
     RouletteWheel readWheelData = new RouletteWheel(this);
     int placeBet = 0;
-    int rectX = width/2+300;
-    int rectY = height/2-350;
+    int rectX = width / 2 + 300;
+    int rectY = height / 2 - 350;
     int cols = 9;
     int rows = 4;
 
-    int textOutX = width/6+60;
-    int textOutY = height/15+730;
+    int textOutX = width / 6 + 60;
+    int textOutY = height / 15 + 730;
 
     int ballX;
     int ballY;
@@ -36,249 +42,322 @@ public class Roulette extends PApplet {
     int centerProx = 155;
 
     PImage img;
-//******
+
+    //******
 // Roulette constructor
 //******
-       public void runRoulette(){
+    public void runRoulette() {
 
-       }
-//*******
+    }
+
+    //*******
 //Creating the Processing window size
 //*******
-        public void settings(){
-            fullScreen();
-        }
+    public void settings() {
+        //    fullScreen();
+        size(1800, 1000);
+    }
 
-//*******
+    //*******
 //Setting up the table
 //*******
-        public void setup(){
-            time = 0;
-            background(0,55,0);
-            imageMode(CENTER);
-            img = loadImage("Pictures/RoulettePictures/Roulette.jpeg");
-            f = createFont("Times New Roman",16);
-            offsetX = width/4;
-            offsetY = height/3;
+    public void setup() {
+        time = 0;
+        background(0, 55, 0);
+        imageMode(CENTER);
+        img = loadImage("Pictures/RoulettePictures/Roulette.jpeg");
+        f = createFont("Times New Roman", 16);
+        offsetX = width / 4;
+        offsetY = height / 3;
 
 
-        }
+    }
 
 //*******
 //Running the program
 //*******
 
-        public void draw() {
-           image(img, width/4,height/3);
+    public void draw() {
+        image(img, width / 4, height / 3);
 
 //******
 // Setting a displaybox in the top center
 //******
-            textFont(f, 16);
-            fill(0,0,0,127);
-            rect(width/2-20, height/25, 200, 80);
-            fill(255);
-            text("Press 'Enter' to finalize bet(s)\n And start the spin\n press 'q' to quit  ", width/2-18, height/25+20);
+        textFont(f, 16);
+        fill(0, 0, 0, 127);
+        rect(width / 2 - 20, height / 25, 200, 80);
+        fill(255);
+        text("Press 'Enter' to finalize bet(s)\n And start the spin\n press 'q' to quit  ", width / 2 - 18, height / 25 + 20);
 
 //******
 // Setting a textbox in the lower left corner
 //******
-        fill(10,10,10,127);
-        rect(width/8,height/3+400,500,230,100);
+        fill(10, 10, 10, 127);
+        rect(width / 8, height / 3 + 400, 500, 230, 100);
 
 //******
 // Betting amount display
 //******
 
-            fill(0,0,0,191);
-            rect(width/2,height/2-70,75,50,100);
+        fill(0, 0, 0, 191);
+        rect(width / 2, height / 2 - 70, 75, 50, 100);
 
 //******
 // Array of Betting buttons
 //******
-            fill(150,150,150,191);
+        fill(150, 150, 150, 191);
 
-            int [][] bettingButtons = new int[cols][rows];
-            int tempX = rectX;
-            rectX = width/2+300;
-            rectY = height/2-350;
-            for (int i = 0; i<cols; i++) {
-                for (int j = 0; j < rows; j++) {
+        int[][] bettingButtons = new int[cols][rows];
+        int tempX = rectX;
+        rectX = width / 2 + 300;
+        rectY = height / 2 - 350;
+        for (int i = 0; i < cols; i++) {
+            for (int j = 0; j < rows; j++) {
 
-                    rect(tempX, rectY, 75, 75);
-                    tempX += 80;
-
-                }
-
-                tempX = rectX;
-                rectY += 80;
+                rect(tempX, rectY, 75, 75);
+                tempX += 80;
             }
+            tempX = rectX;
+            rectY += 80;
+        }
 
- //           readWheelData.getWheelData().get(0).drawfield(width/2,height/2);
+        //           readWheelData.getWheelData().get(0).drawfield(width/2,height/2);
 
 //******
 //Red bet button
 //******
-        fill(120,0,0,191);
-        rect(width/2+630, height/2-280 ,75,200,100);
+        fill(120, 0, 0, 191);
+        rect(width / 2 + 630, height / 2 - 280, 75, 200, 100);
         fill(255);
-        text("RED",width/2+650,height/2-180);
-        if(mousePressed){
-        if(mouseX<width/2+705&&mouseX>width/2+630&&mouseY<height/2-80&&mouseY>height/2-280){
-            fill(0,0,0,191);
-            rect(width/2+630, height/2-280 ,75,200,100);
-            //TODO placeBet
+        text("RED", width / 2 + 650, height / 2 - 180);
+        if (mousePressed) {
+            if (mouseX < width / 2 + 705 && mouseX > width / 2 + 630 && mouseY < height / 2 - 80 && mouseY > height / 2 - 280) {
+                fill(0, 0, 0, 127);
+                rect(width / 2 + 630, height / 2 - 280, 75, 200, 100);
+                //TODO placeBet
 
-        }
+            }
         }
 //******
 //Black bet button
 //******
-        fill(0,0,0,191);
-        rect(width/2+630,height/2,75,200,100);
+        fill(0, 0, 0, 191);
+        rect(width / 2 + 630, height / 2, 75, 200, 100);
         fill(255);
-        text("BLACK",width/2+640,height/2+100);
-        if(mousePressed){
-        if(mouseX<width/2+705&&mouseX>width/2+630&&mouseY<height/2+200&&mouseY>height/2) {
-            fill(100,0,0,191);
-            rect(width/2+630,height/2,75,200,100);
-            //TODO PlaceBet
+        text("BLACK", width / 2 + 640, height / 2 + 100);
+        if (mousePressed) {
+            if (mouseX < width / 2 + 705 && mouseX > width / 2 + 630 && mouseY < height / 2 + 200 && mouseY > height / 2) {
+                fill(100, 0, 0, 127);
+                rect(width / 2 + 630, height / 2, 75, 200, 100);
+                //TODO PlaceBet
 
-        }
+            }
         }
 //******
 //Odd bet button
 //*****
-        fill (0,100,0,191);
-        rect (width/2+200,height/2-280,75,200,100);
+        fill(0, 100, 0, 191);
+        rect(width / 2 + 200, height / 2 - 280, 75, 200, 100);
         fill(255);
-        text("ODD",width/2+215,height/2-180);
-            if(mousePressed){
-                if(mouseX<width/2+275&&mouseX>width/2+200&&mouseY<height/2-80&&mouseY>height/2-280) {
-                    fill(0,0,0,191);
-                    rect (width/2+200,height/2-280,75,200,100);
-                    //TODO PlaceBet
+        text("ODD", width / 2 + 215, height / 2 - 180);
+        if (mousePressed) {
+            if (mouseX < width / 2 + 275 && mouseX > width / 2 + 200 && mouseY < height / 2 - 80 && mouseY > height / 2 - 280) {
+                fill(0, 0, 0, 127);
+                rect(width / 2 + 200, height / 2 - 280, 75, 200, 100);
+                //TODO PlaceBet
 
-                }
             }
+        }
 
 //******
 //even bet button
 //*****
-            fill (0,100,0,191);
-            rect (width/2+200,height/2,75,200,100);
-            fill(255);
-            text("EVEN",width/2+215,height/2+100);
-            if(mousePressed){
-                if(mouseX<width/2+275&&mouseX>width/2+200&&mouseY<height/2+200&&mouseY>height/2) {
-                    fill(0,0,0,191);
-                    rect (width/2+200,height/2,75,200,100);
-                    //TODO PlaceBet
+        fill(0, 100, 0, 191);
+        rect(width / 2 + 200, height / 2, 75, 200, 100);
+        fill(255);
+        text("EVEN", width / 2 + 215, height / 2 + 100);
+        if (mousePressed) {
+            if (mouseX < width / 2 + 275 && mouseX > width / 2 + 200 && mouseY < height / 2 + 200 && mouseY > height / 2) {
+                fill(0, 0, 0, 127);
+                rect(width / 2 + 200, height / 2, 75, 200, 100);
+                //TODO PlaceBet
 
-                }
             }
+        }
 //******
 //zero bet button
 //*****
-            fill (0,100,0,191);
-            rect (width/2+335,height/2-430,237,50,100);
-            fill(255);
-            text("0",width/2+450,height/2-400);
-            if(mousePressed){
-                if(mouseX<width/2+572&&mouseX>width/2+335&&mouseY<height/2-380&&mouseY>height/2-430) {
-                    fill(0,0,0,191);
-                    rect (width/2+335,height/2-430,237,50,100);
-                    //TODO PlaceBet
+        fill(0, 100, 0, 191);
+        rect(width / 2 + 335, height / 2 - 430, 237, 50, 100);
+        fill(255);
+        text("0", width / 2 + 450, height / 2 - 400);
+        if (mousePressed) {
+            if (mouseX < width / 2 + 572 && mouseX > width / 2 + 335 && mouseY < height / 2 - 380 && mouseY > height / 2 - 430) {
+                fill(0, 0, 0, 127);
+                rect(width / 2 + 335, height / 2 - 430, 237, 50, 100);
+                //TODO PlaceBet
 
-                }
             }
+        }
 
 //******
 // Increase bet button
 //******
 
-            fill(100,100,100,191);
-            rect (width/2,height/2-280,75,200,100);
-            fill(255);
-            text("Increase\n Bet", width/2+10,height/2-180);
-            if(mousePressed){
-                if(mouseX<width/2+75&&mouseX>width/2&&mouseY<height/2-80&&mouseY>height/2-280) {
-                    fill(0,0,0,191);
-                    rect (width/2,height/2-280,75,200,100);
-                    //TODO IncreaseBet
+        fill(100, 100, 100, 191);
+        rect(width / 2, height / 2 - 280, 75, 200, 100);
+        fill(255);
+        text("Increase\n Bet", width / 2 + 10, height / 2 - 180);
+        if (mousePressed) {
+            if (mouseX < width / 2 + 75 && mouseX > width / 2 && mouseY < height / 2 - 80 && mouseY > height / 2 - 280) {
+                fill(0, 0, 0, 127);
+                rect(width / 2, height / 2 - 280, 75, 200, 100);
+                //TODO IncreaseBetSize
 
-                }
             }
+        }
 
 
 //******
 // Decrease bet button
 //******
-            fill(100,100,100,191);
-            rect (width/2,height/2,75,200,100);
-            fill(255);
-            text("Decrease\n Bet", width/2+10,height/2+100);
-            if(mousePressed){
-                if(mouseX<width/2+75&&mouseX>width/2&&mouseY<height/2+200&&mouseY>height/2) {
-                    fill(0,0,0,191);
-                    rect (width/2,height/2,75,200,100);
-                    //TODO DecreaseBet
+        fill(100, 100, 100, 191);
+        rect(width / 2, height / 2, 75, 200, 100);
+        fill(255);
+        text("Decrease\n Bet", width / 2 + 10, height / 2 + 100);
+        if (mousePressed) {
+            if (mouseX < width / 2 + 75 && mouseX > width / 2 && mouseY < height / 2 + 200 && mouseY > height / 2) {
+                fill(0, 0, 0, 127);
+                rect(width / 2, height / 2, 75, 200, 100);
+                //TODO DecreaseBetSize
 
-                }
             }
+        }
+
+//******
+// Show betting size
+//******
+        //TODO Show the amount the player is betting at each click in the box between the increase and decrease button
 
 
+//******
+// End betting round
+//******
+        if (keyPressed) {
+            if (key == ENTER && enterPressed == false) {
+                time2 = millis();
+                enterPressed = true;
+            }
+        }
 
+        if (enterPressed) {
+            textFont(f, 16);
+            fill(255);
+            text("ALL BETS ARE SET", width / 8 + 180, height / 3 + 515);
 //******
 //Move the ball
 //******
 
+            if (frameCount % 2 == 0) {
+                count = frameCount;
+                placeShapeAtAngle(count);
+                System.out.println("-" + millis() + "-" + time2);
+            }
+//******
+// Place the bet/bets
+//******
+            if (millis() > time2 + 5000) {
+                placeBet();
+                programControl.User
+                //TODO decrease the betsize from userbalance
+                exit();
+            }
 
-        if(frameCount % 2 == 0){
-            count = frameCount;
-            placeShapeAtAngle(count);
         }
 
+//******
+// takes a random Roulettefield
+//******
+        //TODO take a random Roulettefield
 
 
+//******
+// sees if the user is the winner
+//******
+
+        //TODO is the player a winner "Display"
+        //TODO increase the balance or
+        //TODO go further
 
 
+//*******
+// Start a new game
+//*******
+
+        //TODO runRoulette();
 
 
 //*******
 // Exiting the game
 //*******
-            if (keyPressed){
+        if (keyPressed) {
 
-                if(key == 'q' || key == 'Q') {
+            if (key == 'q' || key == 'Q') {
 
-                        time = millis();
-                        qPressed = true;
-                }
-            }
-            if(qPressed) {
-                textFont(f, 16);
-                fill(255);
-                text("QUITING PROGRAM", width/8 + 180, height/3+515);
-
-                if (millis() > time + 3000) {
-                    exit();
-                }
+                time = millis();
+                qPressed = true;
             }
         }
+        if (qPressed) {
+            textFont(f, 16);
+            fill(255);
+            text("EXITING PROGRAM", width / 8 + 180, height / 3 + 515);
+
+            if (millis() > time + 3000) {
+                //rouletteRunning = false;
+                exit();
+            }
+        }
+    }
 
 
 //******
 // Place bet on table - run placeBet()
 //******
-   /*
-          if (User.balance >= 20){
-              progamControl.currentUser.makeBet();
-            }
-          else{
-                System.out.println("You don't have enough credits to place a bet");
-            }
-    */
+
+    public void placeBet() {
+
+        ArrayList<Bets> makeBet = new ArrayList<Bets>();
+
+
+
+
+
+
+}
+
+
+//******
+// Increase betting size
+//******
+    public int increaseBet() {
+        //TODO make a method to increase betting size
+
+        return totalBetSize;
+    }
+
+
+//******
+// Decrease betting size
+//******
+
+    public int decreaseBet() {
+        //TODO make a method to decrease bettingsize
+
+        return totalBetSize;
+    }
+
+
 //******
 // make the visual roulette magic
 //******
@@ -289,6 +368,8 @@ public class Roulette extends PApplet {
                 return field;
             }
 
+
+
 //******
 //place the ball
 //******
@@ -296,12 +377,12 @@ public class Roulette extends PApplet {
             void placeShapeAtAngle(float i){
                 float angle = TWO_PI/(float) total;
                 //i = i+0,5f;
-
                 float x1 = offsetX + centerProx*sin(angle*i);
                 float y1 = offsetY - centerProx * cos(angle*i);
                 //circle[(int)i] = new PVector(x1,y1);
                 ellipse(x1,y1,10,10);
             }
+
 
 //*******
 // check if the user is wins or not

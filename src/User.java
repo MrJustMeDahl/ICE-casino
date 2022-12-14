@@ -1,4 +1,4 @@
-/*
+
 public class User {
 
     private int userID;
@@ -26,4 +26,4 @@ public class User {
     }
 
 }
-*/
+
