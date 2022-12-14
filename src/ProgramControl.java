@@ -7,7 +7,6 @@ public class ProgramControl {
     private PImage img;
     private PFont welcomeFont;
     private PFont menuFont;
-    private MainMenu mainMenu;
     public static User currentUser;
     private ArrayList<String> allGames;
     private boolean loginChosen = false;
@@ -20,13 +19,12 @@ public class ProgramControl {
     private UserInputBox passwordCreateUserBox;
 
 
-    public ProgramControl(PApplet sketch, MainMenu mainMenu){
+    public ProgramControl(PApplet sketch){
         this.sketch = sketch;
         this.allGames = new ArrayList<>(Arrays.asList("BlackJack", "Craps", "Roulette"));
         this.img = sketch.loadImage("Pictures/Menu images/Loginbackground.jpg");
         this.welcomeFont = sketch.createFont("Georgia", 80);
         this.menuFont = sketch.createFont("Georgia", 50);
-        this.mainMenu = mainMenu;
         this.userInputUsername = new UserInputBox(sketch.width / 2, sketch.height / 2 - 50, 500, 75, "Username");
         this.userInputPassword = new UserInputBox(sketch.width / 2, sketch.height / 2 + 50, 500, 75, "Password");
         this.usernameCreateUserBox = new UserInputBox(sketch.width / 2, sketch.height / 2 - 50, 500, 75, "Username");
@@ -37,7 +35,7 @@ public class ProgramControl {
         if(!loginSuccess) {
             runBackground();
         } else {
-            mainMenu.runMainMenu();
+            MainMenu.mainMenuRunning = true;
         }
         if(!loginChosen && !createNewUserChosen && !loginSuccess) {
             displayOptions();
@@ -52,7 +50,7 @@ public class ProgramControl {
     }
 
     private void runBackground(){
-        sketch.image(this.img, 0,0, 1240, 780);
+        sketch.image(this.img, 0,0, 1600, 900);
         sketch.textFont(this.welcomeFont);
         sketch.textAlign(sketch.CENTER);
         sketch.fill(255);
