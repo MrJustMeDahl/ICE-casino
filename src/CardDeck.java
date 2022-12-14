@@ -107,8 +107,8 @@ public class CardDeck{
 
     private ArrayList<Card> generateHearts(){
         ArrayList<Card> generatedCards = new ArrayList<>();
-        for(int i = 0; i < highestCardValue; i++){
-            Card card = new Card("Hearts", i+1);
+        for(int i = 0; i < highestCardValue -1; i++){
+            Card card = new Card("Hearts", i+2);
             generatedCards.add(card);
         }
         return generatedCards;
@@ -116,8 +116,8 @@ public class CardDeck{
 
     private ArrayList<Card> generateClubs(){
         ArrayList<Card> generatedCards = new ArrayList<>();
-        for(int i = 0; i < highestCardValue; i++){
-            Card card = new Card("Clubs", i+1);
+        for(int i = 0; i < highestCardValue -1; i++){
+            Card card = new Card("Clubs", i+2);
             generatedCards.add(card);
         }
         return generatedCards;
@@ -125,8 +125,8 @@ public class CardDeck{
 
     private ArrayList<Card> generateDiamonds(){
         ArrayList<Card> generatedCards = new ArrayList<>();
-        for(int i = 0; i < highestCardValue; i++){
-            Card card = new Card("Diamonds", i+1);
+        for(int i = 0; i < highestCardValue -1; i++){
+            Card card = new Card("Diamonds", i+2);
             generatedCards.add(card);
         }
         return generatedCards;
@@ -134,8 +134,8 @@ public class CardDeck{
 
     private ArrayList<Card> generateSpades(){
         ArrayList<Card> generatedCards = new ArrayList<>();
-        for(int i = 0; i < highestCardValue; i++){
-            Card card = new Card("Spades", i+1);
+        for(int i = 0; i < highestCardValue -1; i++){
+            Card card = new Card("Spades", i+2);
             generatedCards.add(card);
         }
         return generatedCards;

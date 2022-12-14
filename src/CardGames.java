@@ -3,8 +3,8 @@ import processing.core.PApplet;
 public abstract class CardGames implements AllGames{
 
     private boolean hasWon = false;
-    private String name;
-    private CardDeck currentDeck;
+    protected String name;
+    protected CardDeck currentDeck;
     protected PApplet sketch;
 
     public CardGames(String name, CardDeck currentDeck, PApplet sketch){

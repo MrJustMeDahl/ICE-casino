@@ -4,7 +4,7 @@ public class MainMenu {
     private PApplet sketch;
     private PImage img;
     private PFont userInfoFont;
-    public static boolean mainMenuRunning = true;
+    public static boolean mainMenuRunning = false;
 
     public MainMenu(PApplet sketch){
         this.sketch = sketch;
@@ -14,7 +14,7 @@ public class MainMenu {
 
     public void runMainMenu(){
         if(mainMenuRunning) {
-            sketch.image(img, 0, 0, 1240, 780);
+            sketch.image(img, 0, 0, 1600, 900);
             seeUserInfo();
             addBalance();
             logout();
@@ -50,11 +50,11 @@ public class MainMenu {
 
     private void logout(){
         sketch.fill(255, 150);
-        sketch.rect(150, 740, 125, 50, 40);
+        sketch.rect(150, 840, 125, 50, 40);
         sketch.textSize(18);
         sketch.fill(0);
-        sketch.text("Log out", 150, 745);
-        if(sketch.mousePressed && sketch.mouseX > 150 - (125/2) && sketch.mouseX < 150 + (125/2) && sketch.mouseY > 740 - 25 && sketch.mouseY < 740 + 25){
+        sketch.text("Log out", 150, 845);
+        if(sketch.mousePressed && sketch.mouseX > 150 - (125/2) && sketch.mouseX < 150 + (125/2) && sketch.mouseY > 840 - 25 && sketch.mouseY < 840 + 25){
             ProgramControl.loginSuccess = false;
             mainMenuRunning = false;
         }
@@ -63,21 +63,20 @@ public class MainMenu {
     private void chooseGame(){
         sketch.stroke(200, 200, 0);
         sketch.fill(255, 0);
-        sketch.rect(sketch.width/2, sketch.height/2-170, 200, 60, 40);
-        sketch.rect(sketch.width/2, sketch.height/2-100, 200, 60, 40);
-        sketch.rect(sketch.width/2, sketch.height/2-30, 200,60, 40);
-        if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 100 && sketch.mouseX < sketch.width/2 + 100 && sketch.mouseY > sketch.height/2 - 200 && sketch.mouseY < sketch.height/2 - 140){
+        sketch.rect(sketch.width/2, sketch.height/2-190, 250, 65, 40);
+        sketch.rect(sketch.width/2, sketch.height/2-110, 250, 65, 40);
+        sketch.rect(sketch.width/2, sketch.height/2-30, 250,65, 40);
+        if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 125 && sketch.mouseX < sketch.width/2 + 125 && sketch.mouseY > sketch.height/2 - 190 - (65/2) && sketch.mouseY < sketch.height/2 - 190 + (65/2)){
             /*Roulette roulette = new Roulette();
             roulette.startGame();
 
              */
         }
-        if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 100 && sketch.mouseX < sketch.width/2 + 100 && sketch.mouseY > sketch.height/2 - 130 && sketch.mouseY < sketch.height/2 - 70){
-            BlackJack blackJack = new BlackJack("Blackjack", new CardDeck(10, 4, true, true),sketch);
-            blackJack.startGame();
+        if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 125 && sketch.mouseX < sketch.width/2 + 125 && sketch.mouseY > sketch.height/2 - 110 -(65/2) && sketch.mouseY < sketch.height/2 - 110 + (65/2)){
+            BlackJack.blackjackRunning = true;
             mainMenuRunning = false;
         }
-        if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 100 && sketch.mouseX < sketch.width/2 + 100 && sketch.mouseY > sketch.height/2 - 60 && sketch.mouseY < sketch.height/2){
+        if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 125 && sketch.mouseX < sketch.width/2 + 125 && sketch.mouseY > sketch.height/2 - 30 - (65/2) && sketch.mouseY < sketch.height/2 - 30 + (65/2)){
             /*Craps craps = new Craps();
             craps.startGame();
 
