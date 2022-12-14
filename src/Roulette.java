@@ -9,8 +9,9 @@ import static java.lang.Thread.sleep;
 public class Roulette extends PApplet {
     public static boolean rouletteRunning = false;
     ArrayList<Bets> makeBet = new ArrayList<Bets>();
-    int betSize = 20;
-    int totalBetSize;
+    private boolean mouseIsNotPressed = true;
+    int betChange = 20;
+    int totalBetSize = 20;
     boolean qPressed = false;
     boolean enterPressed = false;
     int time;
@@ -213,10 +214,15 @@ public class Roulette extends PApplet {
                 fill(0, 0, 0, 127);
                 rect(width / 2, height / 2 - 280, 75, 200, 100);
                 //TODO IncreaseBetSize
-
+                if (mousePressed && mouseIsNotPressed) {
+                    increaseBet();
+                    mouseIsNotPressed = false;
+                }
             }
         }
-
+        if (!mousePressed && !mouseIsNotPressed){
+            mouseIsNotPressed = true;
+        }
 
 //******
 // Decrease bet button
@@ -227,17 +233,30 @@ public class Roulette extends PApplet {
         text("Decrease\n Bet", width / 2 + 10, height / 2 + 100);
         if (mousePressed) {
             if (mouseX < width / 2 + 75 && mouseX > width / 2 && mouseY < height / 2 + 200 && mouseY > height / 2) {
+                time = millis();
+
                 fill(0, 0, 0, 127);
                 rect(width / 2, height / 2, 75, 200, 100);
                 //TODO DecreaseBetSize
-
+                if(totalBetSize > 20){
+                    if (mousePressed && mouseIsNotPressed) {
+                        decreaseBet();
+                        mouseIsNotPressed = false;
+                    }
+                }
+                }
             }
+
+        if (!mousePressed && !mouseIsNotPressed){
+            mouseIsNotPressed = true;
         }
 
 //******
 // Show betting size
 //******
-        //TODO Show the amount the player is betting at each click in the box between the increase and decrease button
+
+        fill(255);
+        text(totalBetSize,width/2+35,height/2-40);
 
 
 //******
@@ -251,6 +270,8 @@ public class Roulette extends PApplet {
         }
 
         if (enterPressed) {
+            fill(10, 10, 10);
+            rect(width / 8, height / 3 + 400, 500, 230, 100);
             textFont(f, 16);
             fill(255);
             text("ALL BETS ARE SET", width / 8 + 180, height / 3 + 515);
@@ -261,14 +282,13 @@ public class Roulette extends PApplet {
             if (frameCount % 2 == 0) {
                 count = frameCount;
                 placeShapeAtAngle(count);
-                System.out.println("-" + millis() + "-" + time2);
             }
 //******
 // Place the bet/bets
 //******
             if (millis() > time2 + 5000) {
                 placeBet();
-                programControl.User
+
                 //TODO decrease the betsize from userbalance
                 exit();
             }
@@ -309,6 +329,8 @@ public class Roulette extends PApplet {
             }
         }
         if (qPressed) {
+            fill(10, 10, 10);
+            rect(width / 8, height / 3 + 400, 500, 230, 100);
             textFont(f, 16);
             fill(255);
             text("EXITING PROGRAM", width / 8 + 180, height / 3 + 515);
@@ -334,7 +356,7 @@ public class Roulette extends PApplet {
 
 
 
-}
+    }
 
 
 //******
@@ -342,6 +364,7 @@ public class Roulette extends PApplet {
 //******
     public int increaseBet() {
         //TODO make a method to increase betting size
+        totalBetSize=totalBetSize+20;
 
         return totalBetSize;
     }
@@ -353,6 +376,7 @@ public class Roulette extends PApplet {
 
     public int decreaseBet() {
         //TODO make a method to decrease bettingsize
+        totalBetSize=totalBetSize-20;
 
         return totalBetSize;
     }
@@ -376,10 +400,8 @@ public class Roulette extends PApplet {
 
             void placeShapeAtAngle(float i){
                 float angle = TWO_PI/(float) total;
-                //i = i+0,5f;
                 float x1 = offsetX + centerProx*sin(angle*i);
                 float y1 = offsetY - centerProx * cos(angle*i);
-                //circle[(int)i] = new PVector(x1,y1);
                 ellipse(x1,y1,10,10);
             }
 
