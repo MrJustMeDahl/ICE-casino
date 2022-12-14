@@ -69,17 +69,17 @@ public class MainMenu {
         if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 100 && sketch.mouseX < sketch.width/2 + 100 && sketch.mouseY > sketch.height/2 - 200 && sketch.mouseY < sketch.height/2 - 140){
             System.out.println("Box 1 pressed");
             Roulette roulette = new Roulette();
-            roulette.startGame();
+        //    roulette.startGame();
         }
         if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 100 && sketch.mouseX < sketch.width/2 + 100 && sketch.mouseY > sketch.height/2 - 130 && sketch.mouseY < sketch.height/2 - 70){
             System.out.println("Box 2 pressed");
-            BlackJack blackJack = new BlackJack();
-            blackJack.startGame();
+        //    BlackJack blackJack = new BlackJack();
+         //   blackJack.startGame();
         }
         if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 100 && sketch.mouseX < sketch.width/2 + 100 && sketch.mouseY > sketch.height/2 - 60 && sketch.mouseY < sketch.height/2){
             System.out.println("Box 3 pressed");
-            Craps craps = new Craps();
-            craps.startGame();
+          //  Crabs crabs = new Crabs();
+          //  crabs.startGame();
         }
     }
 }
