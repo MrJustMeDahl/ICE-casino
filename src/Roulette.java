@@ -99,9 +99,7 @@ public class Roulette extends PApplet {
         fill(10, 10, 10, 127);
         rect(width / 2, height - 150, 200, 100, 100);
         fill(255);
-        //TODO make this work
-        text("Cash: "+ ProgramControl.currentUser.getBalance(), width / 2 + 30, height-100);
-      //  text("Cash: ", width / 2 + 30, height - 100);
+        text("Cash: " + ProgramControl.currentUser.getBalance(), width / 2 + 30, height - 100);
 
 //******
 // Betting amount display
@@ -368,8 +366,10 @@ public class Roulette extends PApplet {
                 text("THE WINNING NUMBER IS:" + winningfield.getValue(), width / 8 + 150, height / 3 + 515);
 
                 if (!winnerWinnerChickenDinner) {
-                    if (hasWon(winningfield)) {
-                        winnerWinnerChickenDinner = true;
+                    for (Bets b : makeBet) {
+                        if (hasWon(winningfield, b)) {
+                            winnerWinnerChickenDinner = true;
+                        }
                     }
                     text("Sorry you didn't win, please use more money:", width / 8 + 130, height / 3 + 540);
                 }
@@ -381,11 +381,9 @@ public class Roulette extends PApplet {
             }
 
             if (millis() > time2 + 7000) {
-
                 winnerWinnerChickenDinner = false;
                 enterPressed = false;
                 winningfieldFound = false;
-
                 makeBet.removeAll(makeBet);
                 winningAmount = 0;
             }
@@ -496,36 +494,36 @@ public class Roulette extends PApplet {
 //******
 // Method to calculate if user has won
 //******
-    public boolean hasWon(Roulettefields field) {
-        for (Bets b : makeBet) {
-            if (b.getvalue() == field.getValue()) {
-                winningAmount = b.getBet() * 14;
+    public boolean hasWon(Roulettefields field, Bets b) {
+        if (b.getvalue() == field.getValue()) {
+            winningAmount += b.getBet() * 50;
+            ProgramControl.currentUser.receiveMoney((float) (winningAmount));
+            return true;
+        }
+        if (b.getvalue() == 40 || b.getvalue() == 50) {
+            if (b.getColor() == field.getColor()) {
+                winningAmount += (float) (b.getBet() * 1.5);
+                ProgramControl.currentUser.receiveMoney((float) (winningAmount));
+                return true;
+
+            }
+        }
+
+        if (b.getvalue() == 60) {
+            if (field.getIsEven()) {
+                winningAmount += (float) (b.getBet() * 1.5);
                 ProgramControl.currentUser.receiveMoney((float) (winningAmount));
                 return true;
             }
-            if (b.getvalue() == 40 || b.getvalue() == 50) {
-                if (b.getColor() == field.getColor()) {
-                    winningAmount = (float) (b.getBet() * 1.5);
-                    ProgramControl.currentUser.receiveMoney((float) (winningAmount));
-                    return true;
-
-                }
-            }
-            if (b.getvalue() == 60) {
-                if (field.getIsEven()) {
-                    winningAmount = (float) (b.getBet() * 1.5);
-                    ProgramControl.currentUser.receiveMoney((float) (winningAmount));
-                    return true;
-                }
-            }
-            if (b.getvalue() == 70) {
-                if (!field.getIsEven()) {
-                    winningAmount = (float) (b.getBet() * 1.5);
-                    ProgramControl.currentUser.receiveMoney((float) (winningAmount));
-                    return true;
-                }
+        }
+        if (b.getvalue() == 70) {
+            if (!field.getIsEven()) {
+                winningAmount += (float) (b.getBet() * 1.5);
+                ProgramControl.currentUser.receiveMoney((float) (winningAmount));
+                return true;
             }
         }
+
 
         return false;
     }
