@@ -6,7 +6,7 @@ public interface AllGames {
 
     void chooseBet();
 
-    void calculatePrizeMoney();
+    int calculatePrizeMoney();
 
     void newRound();
 

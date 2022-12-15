@@ -50,6 +50,10 @@ public class CardDeck{
         usedCards.removeAll(usedCards);
     }
 
+    public ArrayList<Card> getCards(){
+        return cards;
+    }
+
     private ArrayList<Card> fillCardDeck(){
         ArrayList<Card> generatedCards = new ArrayList<>();
         switch(suits) {

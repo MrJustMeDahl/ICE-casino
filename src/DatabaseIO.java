@@ -5,7 +5,7 @@ public class DatabaseIO {
     public Connection connection;
     private String url = "jdbc:mysql://localhost/ice?" + "autoReconnect=true&useSSL=false";
     private String username = "root";
-    private String password = "030389";
+    private String password = "cph-nr135";
     public boolean isDatabaseOnline = false;
     public static DatabaseIO databaseIO = new DatabaseIO();
 
