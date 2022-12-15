@@ -11,7 +11,7 @@ public class Dice {
         int roll = 0;
             Random rnd = new Random();
             for (int i = 0; i < numberOfRolls; i++) {
-                roll = rnd.nextInt(6) + 1;
+                roll += rnd.nextInt(6) + 1;
 
             }
             return roll;

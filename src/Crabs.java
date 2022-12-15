@@ -5,7 +5,7 @@ public class Crabs extends PApplet {
     public static void main(String[] args) {
         PApplet.main("Crabs");
     }
-    private int betAmount = 250;
+    private float betAmount = 250;
     private boolean betMade = false;
 
 public void settings(){
