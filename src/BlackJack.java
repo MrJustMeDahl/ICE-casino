@@ -8,6 +8,10 @@ public class BlackJack extends CardGames{
     private PFont menuFont;
     private int betAmount = 250;
     private boolean betMade = false;
+    private boolean gameInProgress = false;
+    private boolean gameOver = false;
+    private ArrayList<Card> playerHand = new ArrayList<>();
+    private ArrayList<Card> dealerHand = new ArrayList<>();
     public BlackJack(String name, CardDeck currentDeck, PApplet sketch) {
         super(name, currentDeck, sketch);
         img = sketch.loadImage("Pictures/BlackjackPictures/Blackjack.jpg");
@@ -38,6 +42,7 @@ public class BlackJack extends CardGames{
         if(sketch.mousePressed && sketch.mouseX > 150 - (125/2) && sketch.mouseX < 150 + (125/2) && sketch.mouseY > 840 - 25 && sketch.mouseY < 840 + 25) {
             blackjackRunning = false;
             MainMenu.mainMenuRunning = true;
+            newRound();
         }
     }
 
@@ -86,6 +91,10 @@ public class BlackJack extends CardGames{
     @Override
     public void newRound() {
         currentDeck.addUsedCards();
+        gameInProgress = false;
+        betMade = false;
+        playerHand.removeAll(playerHand);
+        dealerHand.removeAll(dealerHand);
     }
 
     private void displayUserInfo() {
@@ -100,16 +109,19 @@ public class BlackJack extends CardGames{
 
     private void runGame(){
         drawPlayingLayout();
-        currentDeck.shuffleCards();
-        ArrayList<Card> playerHand = new ArrayList<>();
-        ArrayList<Card> dealerHand = new ArrayList<>();
-        int startHand = 2;
-        while (playerHand.size() < startHand && dealerHand.size() < startHand) {
-            playerHand.add(currentDeck.drawTopCard());
-            dealerHand.add(currentDeck.drawTopCard());
+        if(!gameInProgress) {
+            currentDeck.shuffleCards();
+            int startHand = 2;
+            while (playerHand.size() < startHand && dealerHand.size() < startHand) {
+                playerHand.add(currentDeck.drawTopCard());
+                dealerHand.add(currentDeck.drawTopCard());
+            }
+            gameInProgress = true;
         }
-        displayHands();
-        newRound();
+        displayHands(playerHand, dealerHand);
+        if(gameOver) {
+            newRound();
+        }
     }
 
     private void drawPlayingLayout(){
@@ -130,8 +142,18 @@ public class BlackJack extends CardGames{
         sketch.text("Dealer's Cards:", sketch.width/2 + 100, 300);
     }
 
-    private void displayHands(){
-        int cardPlacement = 475;
-
+    private void displayHands(ArrayList<Card> playerHand, ArrayList<Card> dealerHand){
+        int cardPlacement = 450;
+        for(Card c: playerHand){
+            sketch.fill(255);
+            sketch.rect(cardPlacement, 750, 150, 200, 40);
+            sketch.fill(0);
+            if(c.getName() == null) {
+                sketch.text(c.getSuits() + "\n" + c.getValue(), cardPlacement, 760);
+            } else if(c.getName() != null){
+                sketch.text(c.getName() + " of\n" + c.getSuits() + "\n" + c.getValue(), cardPlacement, 760);
+            }
+            cardPlacement += 155;
+        }
     }
 }
