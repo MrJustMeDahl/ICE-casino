@@ -100,8 +100,8 @@ public class Roulette extends PApplet {
         rect(width / 2, height - 150, 200, 100, 100);
         fill(255);
         //TODO make this work
-        //       text("Cash: "+ ProgramControl.currentUser.getBalance(), width / 2 + 30, height-100);
-        text("Cash: ", width / 2 + 30, height - 100);
+        text("Cash: "+ ProgramControl.currentUser.getBalance(), width / 2 + 30, height-100);
+      //  text("Cash: ", width / 2 + 30, height - 100);
 
 //******
 // Betting amount display
@@ -410,8 +410,7 @@ public class Roulette extends PApplet {
             text("EXITING PROGRAM", width / 8 + 180, height / 3 + 515);
 
             if (millis() > time + 3000) {
-                //rouletteRunning = false;
-                exit();
+                rouletteRunning = false;
             }
         }
     }
@@ -504,7 +503,7 @@ public class Roulette extends PApplet {
                 ProgramControl.currentUser.receiveMoney((float) (winningAmount));
                 return true;
             }
-            if (b.getvalue() == 40 || b.getvalue() == 15) {
+            if (b.getvalue() == 40 || b.getvalue() == 50) {
                 if (b.getColor() == field.getColor()) {
                     winningAmount = (float) (b.getBet() * 1.5);
                     ProgramControl.currentUser.receiveMoney((float) (winningAmount));
@@ -512,15 +511,6 @@ public class Roulette extends PApplet {
 
                 }
             }
-            if (b.getvalue() == 50 || b.getvalue() == 15) {
-                if (b.getColor() == field.getColor()) {
-                    winningAmount = (float) (b.getBet() * 1.5);
-                    ProgramControl.currentUser.receiveMoney((float) (winningAmount));
-                    return true;
-
-                }
-            }
-
             if (b.getvalue() == 60) {
                 if (field.getIsEven()) {
                     winningAmount = (float) (b.getBet() * 1.5);
