@@ -68,8 +68,11 @@ public class MainMenu {
         sketch.rect(sketch.width/2, sketch.height/2-110, 250, 65, 40);
         sketch.rect(sketch.width/2, sketch.height/2-30, 250,65, 40);
         if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 125 && sketch.mouseX < sketch.width/2 + 125 && sketch.mouseY > sketch.height/2 - 190 - (65/2) && sketch.mouseY < sketch.height/2 - 190 + (65/2)){
-            String[] processingArgs = {"Roulette"};
-            sketch.runSketch(processingArgs, roulette);
+            if(!Roulette.rouletteRunning) {
+                String[] processingArgs = {"Roulette"};
+                sketch.runSketch(processingArgs, roulette);
+                Roulette.rouletteRunning = true;
+            }
         }
         if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 125 && sketch.mouseX < sketch.width/2 + 125 && sketch.mouseY > sketch.height/2 - 110 -(65/2) && sketch.mouseY < sketch.height/2 - 110 + (65/2)){
             BlackJack.blackjackRunning = true;
