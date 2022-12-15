@@ -176,9 +176,6 @@ public class ProgramControl {
 
     private User submitLogin(String username, String password){
         User loggedInUser = DatabaseIO.databaseIO.loadUserData(username, password);
-        if(loggedInUser != null) {
-            return loggedInUser;
-        }
         return loggedInUser;
     }
 

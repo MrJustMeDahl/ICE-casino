@@ -19,7 +19,7 @@ public abstract class CardGames implements AllGames{
 
     public abstract void chooseBet();
 
-    public abstract void calculatePrizeMoney();
+    public abstract int calculatePrizeMoney();
 
     public abstract void newRound();
 }
