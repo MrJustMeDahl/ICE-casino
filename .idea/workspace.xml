@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8940c59d-a668-4e96-aadf-b4e21aa6ba3a" name="Changes" comment="updated UML">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AllGames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AllGames.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BlackJack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BlackJack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CardDeck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CardDeck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CardGames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CardGames.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DatabaseIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DatabaseIO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ProgramControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProgramControl.java" afterDir="false" />
-    </list>
+    <list default="true" id="8940c59d-a668-4e96-aadf-b4e21aa6ba3a" name="Changes" comment="updated UML" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,12 +23,12 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="origin/Carstens-work" />
+    <option name="BRANCH" value="origin/master" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Carstens-work" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -79,13 +70,6 @@
   }
 }</component>
   <component name="RunManager" selected="Application.Main">
-    <configuration name="Crabs" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Crabs" />
-      <module name="ICE-casino" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="ICE-casino" />
@@ -102,7 +86,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Crabs" />
         <item itemvalue="Application.Roulette" />
         <item itemvalue="Application.Roulette" />
       </list>
