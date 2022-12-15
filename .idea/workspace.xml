@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8940c59d-a668-4e96-aadf-b4e21aa6ba3a" name="Changes" comment="updated UML" />
+    <list default="true" id="8940c59d-a668-4e96-aadf-b4e21aa6ba3a" name="Changes" comment="updated UML">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BlackJack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BlackJack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Roulette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Roulette.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,7 +29,7 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="origin/master" />
+    <option name="BRANCH" value="origin/Carstens-work" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -70,6 +76,13 @@
   }
 }</component>
   <component name="RunManager" selected="Application.Main">
+    <configuration name="Crabs" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Crabs" />
+      <module name="ICE-casino" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="ICE-casino" />
@@ -86,6 +99,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Crabs" />
         <item itemvalue="Application.Roulette" />
         <item itemvalue="Application.Roulette" />
       </list>
@@ -138,21 +152,7 @@
       <option name="project" value="LOCAL" />
       <updated>1671065230525</updated>
     </task>
-    <task id="LOCAL-00006" summary="Roulette class is more or less finished">
-      <created>1671124300678</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1671124300678</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Roulette class is more or less finished">
-      <created>1671124955664</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1671124955664</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,7 +176,6 @@
     <MESSAGE value="Changed Roulette class, removed textbox, changed UML" />
     <MESSAGE value="Made som changes in Roulette and created a Bets class" />
     <MESSAGE value="Made som changes in Roulette" />
-    <MESSAGE value="Roulette class is more or less finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="Roulette class is more or less finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made som changes in Roulette" />
   </component>
 </project>

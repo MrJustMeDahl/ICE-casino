@@ -5,6 +5,7 @@ public class MainMenu {
     private PImage img;
     private PFont userInfoFont;
     public static boolean mainMenuRunning = false;
+    private Roulette roulette = new Roulette();
 
     public MainMenu(PApplet sketch){
         this.sketch = sketch;
@@ -67,10 +68,8 @@ public class MainMenu {
         sketch.rect(sketch.width/2, sketch.height/2-110, 250, 65, 40);
         sketch.rect(sketch.width/2, sketch.height/2-30, 250,65, 40);
         if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 125 && sketch.mouseX < sketch.width/2 + 125 && sketch.mouseY > sketch.height/2 - 190 - (65/2) && sketch.mouseY < sketch.height/2 - 190 + (65/2)){
-            /*Roulette roulette = new Roulette();
-            roulette.startGame();
-
-             */
+            String[] processingArgs = {"Roulette"};
+            sketch.runSketch(processingArgs, roulette);
         }
         if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 125 && sketch.mouseX < sketch.width/2 + 125 && sketch.mouseY > sketch.height/2 - 110 -(65/2) && sketch.mouseY < sketch.height/2 - 110 + (65/2)){
             BlackJack.blackjackRunning = true;
