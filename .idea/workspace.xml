@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5b6ca83-4a31-45d8-9bc1-bd6909a83488" name="Changes" comment="updated UML" />
+    <list default="true" id="32110525-2e6e-450c-842d-90b618199146" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,6 +91,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.Crabs" />
+      <item itemvalue="Application.Roulette" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Crabs" />
