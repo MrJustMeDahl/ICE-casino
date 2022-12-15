@@ -99,9 +99,7 @@ public class Roulette extends PApplet {
         fill(10, 10, 10, 127);
         rect(width / 2, height - 150, 200, 100, 100);
         fill(255);
-        //TODO make this work
-        //       text("Cash: "+ ProgramControl.currentUser.getBalance(), width / 2 + 30, height-100);
-        text("Cash: ", width / 2 + 30, height - 100);
+        text("Cash: " + ProgramControl.currentUser.getBalance(), width / 2 + 30, height - 100);
 
 //******
 // Betting amount display
