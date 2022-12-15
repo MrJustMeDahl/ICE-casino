@@ -51,7 +51,7 @@ public class Roulette extends PApplet {
 
     }
 
-    //*******
+//*******
 //Creating the Processing window size
 //*******
     public void settings() {
@@ -59,7 +59,7 @@ public class Roulette extends PApplet {
         size(1800, 1000);
     }
 
-    //*******
+//*******
 //Setting up the table
 //*******
     public void setup() {
