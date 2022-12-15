@@ -9,6 +9,7 @@ public class Roulette extends PApplet {
     private boolean winningfieldFound = false;
     private boolean winnerWinnerChickenDinner = false;
     private boolean buttonPressedHard = false;
+    private boolean showMeTheMoney = false;
     Roulettefields winningfield;
     private float winningAmount = 0;
     private float newX;
@@ -377,6 +378,11 @@ public class Roulette extends PApplet {
                 if (winnerWinnerChickenDinner) {
                     text("You have won:", width / 8 + 150, height / 3 + 540);
                     text("Payout: " + winningAmount, width / 8 + 150, height / 3 + 560);
+
+                 if(showMeTheMoney == false){
+                        ProgramControl.currentUser.receiveMoney(winningAmount);
+                        showMeTheMoney = true;
+                    }
                 }
             }
 
@@ -384,6 +390,7 @@ public class Roulette extends PApplet {
                 winnerWinnerChickenDinner = false;
                 enterPressed = false;
                 winningfieldFound = false;
+                showMeTheMoney = false;
                 makeBet.removeAll(makeBet);
                 winningAmount = 0;
             }
@@ -496,14 +503,14 @@ public class Roulette extends PApplet {
 //******
     public boolean hasWon(Roulettefields field, Bets b) {
         if (b.getvalue() == field.getValue()) {
-            winningAmount += b.getBet() * 50;
-            ProgramControl.currentUser.receiveMoney((float) (winningAmount));
+            winningAmount += b.getBet() * 14;
+
             return true;
         }
         if (b.getvalue() == 40 || b.getvalue() == 50) {
             if (b.getColor() == field.getColor()) {
                 winningAmount += (float) (b.getBet() * 1.5);
-                ProgramControl.currentUser.receiveMoney((float) (winningAmount));
+
                 return true;
 
             }
@@ -512,14 +519,14 @@ public class Roulette extends PApplet {
         if (b.getvalue() == 60) {
             if (field.getIsEven()) {
                 winningAmount += (float) (b.getBet() * 1.5);
-                ProgramControl.currentUser.receiveMoney((float) (winningAmount));
+
                 return true;
             }
         }
         if (b.getvalue() == 70) {
             if (!field.getIsEven()) {
                 winningAmount += (float) (b.getBet() * 1.5);
-                ProgramControl.currentUser.receiveMoney((float) (winningAmount));
+
                 return true;
             }
         }

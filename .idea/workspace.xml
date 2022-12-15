@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5b6ca83-4a31-45d8-9bc1-bd6909a83488" name="Changes" comment="updated UML" />
+    <list default="true" id="e5b6ca83-4a31-45d8-9bc1-bd6909a83488" name="Changes" comment="Fix it">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Roulette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Roulette.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -159,7 +162,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671132018718</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Fix it">
+      <created>1671138730345</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1671138730345</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -185,6 +195,7 @@
     <MESSAGE value="Made som changes in Roulette" />
     <MESSAGE value="Roulette class is more or less finished" />
     <MESSAGE value="Small changes in Roulette Class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Small changes in Roulette Class" />
+    <MESSAGE value="Fix it" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix it" />
   </component>
 </project>
