@@ -1,0 +1,34 @@
+Index: .idea/libraries/mysql_connector_java_5_1_49_bin1.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/libraries/mysql_connector_java_5_1_49_bin1.xml b/.idea/libraries/mysql_connector_java_5_1_49_bin.xml
+rename from .idea/libraries/mysql_connector_java_5_1_49_bin1.xml
+rename to .idea/libraries/mysql_connector_java_5_1_49_bin.xml
+--- a/.idea/libraries/mysql_connector_java_5_1_49_bin1.xml	
++++ b/.idea/libraries/mysql_connector_java_5_1_49_bin.xml	
+@@ -1,5 +1,5 @@
+ <component name="libraryTable">
+-  <library name="mysql-connector-java-5.1.49-bin1">
++  <library name="mysql-connector-java-5.1.49-bin">
+     <CLASSES>
+       <root url="jar://$USER_HOME$/OneDrive/Skrivebord/InteliJ/mysql-connector-java-5.1.49/mysql-connector-java-5.1.49-bin.jar!/" />
+     </CLASSES>
+Index: .idea/libraries/core1.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/libraries/core1.xml b/.idea/libraries/core.xml
+rename from .idea/libraries/core1.xml
+rename to .idea/libraries/core.xml
+--- a/.idea/libraries/core1.xml	
++++ b/.idea/libraries/core.xml	
+@@ -1,5 +1,5 @@
+ <component name="libraryTable">
+-  <library name="core1">
++  <library name="core">
+     <CLASSES>
+       <root url="jar://$USER_HOME$/OneDrive/Skrivebord/processing-4.1.1/core/library/core.jar!/" />
+     </CLASSES>

@@ -33,7 +33,7 @@ public class DatabaseIO {
     }
     public void writeToUserData(String username, String password){
         establishConnection();
-        String query = "INSERT INTO ice.userdata (userName, userPassword, userBalance) VALUES (?, ?, 5000)";
+        String query = "INSERT INTO ice.userdata (userName, userPassword, userBalance) VALUES (?, ?, 5000.0)";
         try{
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, username);
@@ -67,12 +67,12 @@ public class DatabaseIO {
         return null;
     }
 
-    public void updateUserBalance(int userID, int balance){
+    public void updateUserBalance(int userID, float balance){
         establishConnection();
         String query = "UPDATE ice.userdata SET userBalance=? WHERE idUserData = ?";
         try{
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setInt(1, balance);
+            statement.setFloat(1, balance);
             statement.setInt(2, userID);
             statement.execute();
         }catch (SQLException e){

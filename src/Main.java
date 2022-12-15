@@ -9,7 +9,8 @@ public class Main extends PApplet {
         String[] processingArgs = {"ICE CASINO"};
         Main ICE_CASINO = new Main();
         PApplet.runSketch(processingArgs, ICE_CASINO);
-    }
+        }
+
     public void setup(){
         this.mainMenu = new MainMenu(this);
         this.pc = new ProgramControl(this);
@@ -20,8 +21,14 @@ public class Main extends PApplet {
     }
 
     public void draw(){
-        this.pc.runCasino();
-        this.mainMenu.runMainMenu();
-        this.blackJack.startGame();
+        if(!ProgramControl.loginSuccess) {
+            this.pc.runCasino();
+        }
+        if(MainMenu.mainMenuRunning){
+            this.mainMenu.runMainMenu();
+        }
+        if (BlackJack.blackjackRunning) {
+            this.blackJack.startGame();
+        }
     }
 }
