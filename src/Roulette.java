@@ -44,21 +44,21 @@ public class Roulette extends PApplet {
 
     PImage img;
 
-    //******
+//******
 // Roulette constructor
 //******
     public void runRoulette() {
 
     }
 
-    //*******
+//*******
 //Creating the Processing window size
 //*******
     public void settings() {
         size(1800, 1000);
     }
 
-    //*******
+//*******
 //Setting up the table
 //*******
     public void setup() {
@@ -99,7 +99,9 @@ public class Roulette extends PApplet {
         fill(10, 10, 10, 127);
         rect(width / 2, height - 150, 200, 100, 100);
         fill(255);
-        text("Cash: " + ProgramControl.currentUser.getBalance(), width / 2 + 30, height - 100);
+        //TODO make this work
+        //       text("Cash: "+ ProgramControl.currentUser.getBalance(), width / 2 + 30, height-100);
+        text("Cash: ", width / 2 + 30, height - 100);
 
 //******
 // Betting amount display
@@ -154,6 +156,7 @@ public class Roulette extends PApplet {
         pressBlackButton(width / 2 + 460, height / 2 + 290, 75, 75, 35);
 
 
+
         fill(150, 150, 150, 191);
 
         int[][] bettingButtons = new int[cols][rows];
@@ -187,7 +190,6 @@ public class Roulette extends PApplet {
                 rect(width / 2 + 630, height / 2 - 280, 75, 200, 100);
                 if (!buttonPressedHard) {
                     placeBet(new Bets(totalBetSize, 40, 1));
-                    totalBetSize = 20;
                     buttonPressedHard = true;
                 }
 
@@ -207,7 +209,6 @@ public class Roulette extends PApplet {
                 rect(width / 2 + 630, height / 2, 75, 200, 100);
                 if (!buttonPressedHard) {
                     placeBet(new Bets(totalBetSize, 50, 2));
-                    totalBetSize = 20;
                     buttonPressedHard = true;
                 }
             }
@@ -227,7 +228,6 @@ public class Roulette extends PApplet {
 
                 if (!buttonPressedHard) {
                     placeBet(new Bets(totalBetSize, 70, 3));
-                    totalBetSize = 20;
                     buttonPressedHard = true;
                 }
             }
@@ -246,7 +246,6 @@ public class Roulette extends PApplet {
                 rect(width / 2 + 200, height / 2, 75, 200, 100);
                 if (!buttonPressedHard) {
                     placeBet(new Bets(totalBetSize, 60, 3));
-                    totalBetSize = 20;
                     buttonPressedHard = true;
                 }
             }
@@ -266,7 +265,6 @@ public class Roulette extends PApplet {
 
                 if (!buttonPressedHard) {
                     placeBet(new Bets(totalBetSize, 0, 3));
-                    totalBetSize = 20;
                     buttonPressedHard = true;
                 }
             }
@@ -370,10 +368,8 @@ public class Roulette extends PApplet {
                 text("THE WINNING NUMBER IS:" + winningfield.getValue(), width / 8 + 150, height / 3 + 515);
 
                 if (!winnerWinnerChickenDinner) {
-                    for (Bets b : makeBet) {
-                        if (hasWon(winningfield, b)) {
-                            winnerWinnerChickenDinner = true;
-                        }
+                    if (hasWon(winningfield)) {
+                        winnerWinnerChickenDinner = true;
                     }
                     text("Sorry you didn't win, please use more money:", width / 8 + 130, height / 3 + 540);
                 }
@@ -385,9 +381,11 @@ public class Roulette extends PApplet {
             }
 
             if (millis() > time2 + 7000) {
+
                 winnerWinnerChickenDinner = false;
                 enterPressed = false;
                 winningfieldFound = false;
+
                 makeBet.removeAll(makeBet);
                 winningAmount = 0;
             }
@@ -423,8 +421,8 @@ public class Roulette extends PApplet {
         this.newY = newY;
         this.newZ = newZ;
         this.newT = newT;
-        fill(120, 0, 0, 191);
-        rect(newX, newY, 75, 75);
+        fill(120,0,0,191);
+        rect(newX,newY,75,75);
 
 
         if (mousePressed) {
@@ -433,7 +431,6 @@ public class Roulette extends PApplet {
                 rect(newX, newY, 75, 75, 191);
                 if (!buttonPressedHard) {
                     placeBet(new Bets(totalBetSize, value, 1));
-                    totalBetSize = 20;
                     buttonPressedHard = true;
                 }
             }
@@ -445,8 +442,8 @@ public class Roulette extends PApplet {
         this.newY = newY;
         this.newZ = newZ;
         this.newT = newT;
-        fill(0, 0, 0, 191);
-        rect(newX, newY, 75, 75);
+        fill(0,0,0,191);
+        rect(newX,newY,75,75);
 
         if (mousePressed) {
             if (mouseX < newX + newZ && mouseX > newX && mouseY < newY + newT && mouseY > newY) {
@@ -454,7 +451,6 @@ public class Roulette extends PApplet {
                 rect(newX, newY, 75, 75, 191);
                 if (!buttonPressedHard) {
                     placeBet(new Bets(totalBetSize, value, 1));
-                    totalBetSize = 20;
                     buttonPressedHard = true;
                 }
             }
@@ -477,7 +473,7 @@ public class Roulette extends PApplet {
         makeBet.add(bet);
     }
 
-    //******
+//******
 // Increase betting size
 //******
     public int increaseBet() {
@@ -498,45 +494,54 @@ public class Roulette extends PApplet {
         return totalBetSize;
     }
 
-    //******
+//******
 // Method to calculate if user has won
 //******
-    public boolean hasWon(Roulettefields field, Bets b) {
-        if (b.getvalue() == field.getValue()) {
-            winningAmount += b.getBet() * 50;
-            ProgramControl.currentUser.receiveMoney((float) (winningAmount));
-            return true;
-        }
-        if (b.getvalue() == 40 || b.getvalue() == 50) {
-            if (b.getColor() == field.getColor()) {
-                winningAmount += (float) (b.getBet() * 1.5);
-                ProgramControl.currentUser.receiveMoney((float) (winningAmount));
-                return true;
-
-            }
-        }
-
-        if (b.getvalue() == 60) {
-            if (field.getIsEven()) {
-                winningAmount += (float) (b.getBet() * 1.5);
+    public boolean hasWon(Roulettefields field) {
+        for (Bets b : makeBet) {
+            if (b.getvalue() == field.getValue()) {
+                winningAmount = b.getBet() * 14;
                 ProgramControl.currentUser.receiveMoney((float) (winningAmount));
                 return true;
             }
-        }
-        if (b.getvalue() == 70) {
-            if (!field.getIsEven()) {
-                winningAmount += (float) (b.getBet() * 1.5);
-                ProgramControl.currentUser.receiveMoney((float) (winningAmount));
-                return true;
+            if (b.getvalue() == 40 || b.getvalue() == 15) {
+                if (b.getColor() == field.getColor()) {
+                    winningAmount = (float) (b.getBet() * 1.5);
+                    ProgramControl.currentUser.receiveMoney((float) (winningAmount));
+                    return true;
+
+                }
+            }
+            if (b.getvalue() == 50 || b.getvalue() == 15) {
+                if (b.getColor() == field.getColor()) {
+                    winningAmount = (float) (b.getBet() * 1.5);
+                    ProgramControl.currentUser.receiveMoney((float) (winningAmount));
+                    return true;
+
+                }
+            }
+
+            if (b.getvalue() == 60) {
+                if (field.getIsEven()) {
+                    winningAmount = (float) (b.getBet() * 1.5);
+                    ProgramControl.currentUser.receiveMoney((float) (winningAmount));
+                    return true;
+                }
+            }
+            if (b.getvalue() == 70) {
+                if (!field.getIsEven()) {
+                    winningAmount = (float) (b.getBet() * 1.5);
+                    ProgramControl.currentUser.receiveMoney((float) (winningAmount));
+                    return true;
+                }
             }
         }
-
 
         return false;
     }
 
 
-    //******
+//******
 // make the visual roulette magic
 //******
     public Roulettefields spinTheWheel() {
