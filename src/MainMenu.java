@@ -68,8 +68,7 @@ public class MainMenu {
         sketch.rect(sketch.width/2, sketch.height/2-30, 200,60, 40);
         if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 100 && sketch.mouseX < sketch.width/2 + 100 && sketch.mouseY > sketch.height/2 - 200 && sketch.mouseY < sketch.height/2 - 140){
             System.out.println("Box 1 pressed");
-            Roulette roulette = new Roulette();
-//            roulette.startGame();
+            Roulette.rouletteRunning = true;
         }
         if(sketch.mousePressed && sketch.mouseX > sketch.width/2 - 100 && sketch.mouseX < sketch.width/2 + 100 && sketch.mouseY > sketch.height/2 - 130 && sketch.mouseY < sketch.height/2 - 70){
             System.out.println("Box 2 pressed");

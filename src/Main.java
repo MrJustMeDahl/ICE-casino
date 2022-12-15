@@ -1,5 +1,5 @@
 import processing.core.*;
-/*
+
 public class Main extends PApplet {
     private ProgramControl pc;
     private MainMenu mainMenu;
@@ -8,7 +8,10 @@ public class Main extends PApplet {
         String[] processingArgs = {"ICE CASINO"};
         Main ICE_CASINO = new Main();
         PApplet.runSketch(processingArgs, ICE_CASINO);
-    }
+        Roulette roulette = new Roulette();
+        PApplet.runSketch(processingArgs, roulette);
+        }
+
     public void setup(){
         this.mainMenu = new MainMenu(this, pc);
         this.pc = new ProgramControl(this, mainMenu);
@@ -21,4 +24,3 @@ public class Main extends PApplet {
         this.pc.runCasino();
     }
 }
-*/

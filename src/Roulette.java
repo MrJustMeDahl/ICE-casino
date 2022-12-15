@@ -7,7 +7,14 @@ import static java.lang.Thread.sleep;
 
 
 public class Roulette extends PApplet {
+
     public static boolean rouletteRunning = false;
+    private boolean winningfieldFound = false;
+    private boolean winnerWinnerChickenDinner = false;
+    private boolean buttonPressedHard = false;
+    Roulettefields winningfield;
+    private float winningAmount = 0;
+
     ArrayList<Bets> makeBet = new ArrayList<Bets>();
     private boolean mouseIsNotPressed = true;
     int betChange = 20;
@@ -70,7 +77,6 @@ public class Roulette extends PApplet {
         f = createFont("Times New Roman", 16);
         offsetX = width / 4;
         offsetY = height / 3;
-
 
     }
 
@@ -136,9 +142,14 @@ public class Roulette extends PApplet {
                 fill(0, 0, 0, 127);
                 rect(width / 2 + 630, height / 2 - 280, 75, 200, 100);
                 //TODO placeBet
+                if(!buttonPressedHard) {
+                    placeBet(new Bets(totalBetSize, 40, 1));
+                    buttonPressedHard = true;
+                }
 
             }
         }
+
 //******
 //Black bet button
 //******
@@ -151,6 +162,7 @@ public class Roulette extends PApplet {
                 fill(100, 0, 0, 127);
                 rect(width / 2 + 630, height / 2, 75, 200, 100);
                 //TODO PlaceBet
+                placeBet(new Bets(totalBetSize,50,2));
 
             }
         }
@@ -166,6 +178,7 @@ public class Roulette extends PApplet {
                 fill(0, 0, 0, 127);
                 rect(width / 2 + 200, height / 2 - 280, 75, 200, 100);
                 //TODO PlaceBet
+                placeBet(new Bets(totalBetSize,70,3));
 
             }
         }
@@ -182,6 +195,7 @@ public class Roulette extends PApplet {
                 fill(0, 0, 0, 127);
                 rect(width / 2 + 200, height / 2, 75, 200, 100);
                 //TODO PlaceBet
+                placeBet(new Bets(totalBetSize,60,3));
 
             }
         }
@@ -197,6 +211,7 @@ public class Roulette extends PApplet {
                 fill(0, 0, 0, 127);
                 rect(width / 2 + 335, height / 2 - 430, 237, 50, 100);
                 //TODO PlaceBet
+                placeBet(new Bets(totalBetSize,0,3));
 
             }
         }
@@ -275,6 +290,8 @@ public class Roulette extends PApplet {
             textFont(f, 16);
             fill(255);
             text("ALL BETS ARE SET", width / 8 + 180, height / 3 + 515);
+            //TODO decrease the betsize from userbalance
+
 //******
 //Move the ball
 //******
@@ -286,12 +303,40 @@ public class Roulette extends PApplet {
 //******
 // Place the bet/bets
 //******
-            if (millis() > time2 + 5000) {
-                placeBet();
+            if (millis() > time2 + 3000) {
+                if(!winningfieldFound ) {
+                    winningfield = spinTheWheel();
+                    winningfieldFound = true;
+                }
+                fill(10, 10, 10);
+                rect(width / 8, height / 3 + 400, 500, 230, 100);
+                textFont(f, 16);
+                fill(255);
+                text("THE WINNING NUMBER IS:" + winningfield.getValue(), width / 8 + 150, height / 3 + 515);
 
-                //TODO decrease the betsize from userbalance
-                exit();
+                if(!winnerWinnerChickenDinner) {
+                    if (hasWon(winningfield)) {
+                        winnerWinnerChickenDinner = true;
+                    }
+                    text("Sorry you didn't win, please use more money:", width / 8 + 130, height / 3 + 540);
+                }
+
+                if(winnerWinnerChickenDinner) {
+                    text("You have won:", width / 8 + 150, height / 3 + 540);
+                    text("Payout: "+winningAmount, width / 8 + 150, height / 3 + 560);
+                }
+
             }
+
+             if( millis()> time2 + 7000){
+
+                winnerWinnerChickenDinner = false;
+                 enterPressed = false;
+                 winningfieldFound = false;
+
+                 makeBet.removeAll(makeBet);
+                 winningAmount = 0;
+             }
 
         }
 
@@ -299,7 +344,7 @@ public class Roulette extends PApplet {
 // takes a random Roulettefield
 //******
         //TODO take a random Roulettefield
-        spinTheWheel();
+
 
 
 //******
@@ -343,20 +388,21 @@ public class Roulette extends PApplet {
         }
     }
 
+    @Override
+    public void mouseReleased(){
+
+        buttonPressedHard = false;
+
+    }
+
 
 //******
 // Place bet on table - run placeBet()
 //******
 
-    public void placeBet() {
-
-        ArrayList<Bets> makeBet = new ArrayList<Bets>();
-
-
-
-
-
-
+    public void placeBet( Bets bet) {
+        ProgramControl.currentUser.makeBet(bet.getBet());
+        makeBet.add(bet);
     }
 
 
@@ -380,6 +426,47 @@ public class Roulette extends PApplet {
         totalBetSize=totalBetSize-20;
 
         return totalBetSize;
+    }
+
+    public boolean hasWon(Roulettefields field){
+        for(Bets b: makeBet){
+            if(b.getvalue() == field.getValue()){
+                winningAmount = b.getBet()*50;
+                ProgramControl.currentUser.receiveMoney((float) (winningAmount));
+                return true;
+            }
+            if(b.getvalue()==40 || b.getvalue() == 50) {
+                if (b.getColor() == field.getColor()) {
+                    winningAmount = (float) (b.getBet()*1.5);
+                    ProgramControl.currentUser.receiveMoney((float) (winningAmount));
+                    return true;
+
+                }
+            }
+
+            if(b.getvalue()==60) {
+                if (field.getIsEven()) {
+                    winningAmount = (float) (b.getBet()*1.5);
+                    ProgramControl.currentUser.receiveMoney((float) (winningAmount));
+                    return true;
+                }
+            }
+            if(b.getvalue()==70){
+                if(!field.getIsEven()){
+                    winningAmount = (float) (b.getBet()*1.5);
+                    ProgramControl.currentUser.receiveMoney((float) (winningAmount));
+                    return true;
+
+                }
+
+
+            }
+
+
+        }
+
+
+        return false;
     }
 
 
@@ -443,7 +530,7 @@ public class Roulette extends PApplet {
 
 //    }
 
-
+/*
 //*******
 //Temp startup
 //*******
@@ -452,5 +539,5 @@ public class Roulette extends PApplet {
 
     }
 
-
+*/
 }

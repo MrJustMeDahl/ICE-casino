@@ -30,8 +30,6 @@ public class Roulettefields extends PApplet{
 
             default:
                 throw new RuntimeException("fail to load roulette data");
-
-
         }
 
         switch(even){
@@ -47,15 +45,12 @@ public class Roulettefields extends PApplet{
 
             default:
                 throw new RuntimeException("fail to load roulette data");
-
-
         }
 
     }
 
 
     public void drawfield(int x, int y){
-
 
 
             switch (color) {
@@ -87,8 +82,16 @@ public class Roulettefields extends PApplet{
 
         }
 
+    public int getValue() {
 
+        return value;
+    }
 
+    public int getColor() {
+        return color;
+    }
 
-
+    public boolean getIsEven() {
+        return even;
+    }
 }
