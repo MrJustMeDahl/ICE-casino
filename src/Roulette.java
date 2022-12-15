@@ -213,7 +213,7 @@ public class Roulette extends PApplet {
             if (mouseX < width / 2 + 75 && mouseX > width / 2 && mouseY < height / 2 - 80 && mouseY > height / 2 - 280) {
                 fill(0, 0, 0, 127);
                 rect(width / 2, height / 2 - 280, 75, 200, 100);
-                //TODO IncreaseBetSize
+
                 if (mousePressed && mouseIsNotPressed) {
                     increaseBet();
                     mouseIsNotPressed = false;
@@ -237,7 +237,7 @@ public class Roulette extends PApplet {
 
                 fill(0, 0, 0, 127);
                 rect(width / 2, height / 2, 75, 200, 100);
-                //TODO DecreaseBetSize
+
                 if(totalBetSize > 20){
                     if (mousePressed && mouseIsNotPressed) {
                         decreaseBet();
@@ -299,6 +299,7 @@ public class Roulette extends PApplet {
 // takes a random Roulettefield
 //******
         //TODO take a random Roulettefield
+        spinTheWheel();
 
 
 //******
@@ -363,7 +364,7 @@ public class Roulette extends PApplet {
 // Increase betting size
 //******
     public int increaseBet() {
-        //TODO make a method to increase betting size
+
         totalBetSize=totalBetSize+20;
 
         return totalBetSize;
@@ -375,7 +376,7 @@ public class Roulette extends PApplet {
 //******
 
     public int decreaseBet() {
-        //TODO make a method to decrease bettingsize
+
         totalBetSize=totalBetSize-20;
 
         return totalBetSize;
@@ -431,14 +432,6 @@ public class Roulette extends PApplet {
           }
 */
 
-//*******
-//Runs the Roulette Algorithm
-//*******
-    private void rouletteRules(){
-
-
-
-    }
 
 
 
