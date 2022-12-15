@@ -31,7 +31,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="Carstens-work" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -141,7 +141,21 @@
       <option name="project" value="LOCAL" />
       <updated>1671065230525</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Roulette class is more or less finished">
+      <created>1671124300678</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1671124300678</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Roulette class is more or less finished">
+      <created>1671124955664</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1671124955664</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,6 +179,7 @@
     <MESSAGE value="Changed Roulette class, removed textbox, changed UML" />
     <MESSAGE value="Made som changes in Roulette and created a Bets class" />
     <MESSAGE value="Made som changes in Roulette" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made som changes in Roulette" />
+    <MESSAGE value="Roulette class is more or less finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="Roulette class is more or less finished" />
   </component>
 </project>

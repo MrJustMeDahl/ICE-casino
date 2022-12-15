@@ -55,7 +55,6 @@ public class Roulette extends PApplet {
 //Creating the Processing window size
 //*******
     public void settings() {
-        //    fullScreen();
         size(1800, 1000);
     }
 
@@ -417,7 +416,7 @@ public class Roulette extends PApplet {
         }
     }
 
-    public void pressRedButton(float newX, float newY, float newZ, float newT, int value) {
+    public void pressRedButton(int newX, int newY, int newZ, int newT, int value) {
         this.newX = newX;
         this.newY = newY;
         this.newZ = newZ;
@@ -474,7 +473,7 @@ public class Roulette extends PApplet {
         makeBet.add(bet);
     }
 
-    //******
+//******
 // Increase betting size
 //******
     public int increaseBet() {
