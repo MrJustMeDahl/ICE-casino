@@ -9,7 +9,10 @@ public class Main extends PApplet {
         String[] processingArgs = {"ICE CASINO"};
         Main ICE_CASINO = new Main();
         PApplet.runSketch(processingArgs, ICE_CASINO);
-    }
+        Roulette roulette = new Roulette();
+        PApplet.runSketch(processingArgs, roulette);
+        }
+
     public void setup(){
         this.mainMenu = new MainMenu(this);
         this.pc = new ProgramControl(this);

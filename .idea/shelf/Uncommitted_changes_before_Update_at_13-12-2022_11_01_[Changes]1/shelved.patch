@@ -1,0 +1,51 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -56,6 +56,7 @@
+     "DefaultPlantUmlFileTemplate": "UML Class",
+     "RunOnceActivity.OpenProjectViewOnStart": "true",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
++    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+     "WebServerToolWindowFactoryState": "false",
+     "last_opened_file_path": "C:/Users/Carsten/OneDrive/Skrivebord/InteliJ/mysql-connector-java-5.1.49/mysql-connector-java-5.1.49-bin.jar",
+     "node.js.detected.package.eslint": "true",
+@@ -123,7 +124,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1670856645706</updated>
+     </task>
+-    <option name="localTasksCounter" value="4" />
++    <task id="LOCAL-00004" summary="Changed Roulette class, removed textbox, changed UML">
++      <created>1670925288375</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1670925288375</updated>
++    </task>
++    <option name="localTasksCounter" value="5" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+Index: ICE-casino.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ICE-casino.iml b/ICE-casino.iml
+--- a/ICE-casino.iml	
++++ b/ICE-casino.iml	
+@@ -7,7 +7,7 @@
+     </content>
+     <orderEntry type="inheritedJdk" />
+     <orderEntry type="sourceFolder" forTests="false" />
+-    <orderEntry type="library" name="core1" level="project" />
+-    <orderEntry type="library" name="mysql-connector-java-5.1.49-bin1" level="project" />
++    <orderEntry type="library" name="core" level="project" />
++    <orderEntry type="library" name="mysql-connector-java-5.1.49-bin" level="project" />
+   </component>
+ </module>
+\ No newline at end of file
