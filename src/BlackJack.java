@@ -12,7 +12,9 @@ public class BlackJack extends CardGames {
     private boolean gameOver = false;
     private boolean playersTurn = true;
     private boolean displayWinnerMessage = false;
+    private boolean hitPressed = false;
     private String winnerText;
+    private int hitTimer;
     private ArrayList<Card> playerHand = new ArrayList<>();
     private ArrayList<Card> dealerHand = new ArrayList<>();
 
@@ -149,7 +151,11 @@ public class BlackJack extends CardGames {
         displayHands(playerHand, dealerHand);
         if (playersTurn) {
             if (sketch.mousePressed && sketch.mouseX > 50 && sketch.mouseX < 250 && sketch.mouseY > 290 && sketch.mouseY < 410) {
-                playerHand.add(currentDeck.drawTopCard());
+                hitTimer = sketch.millis();
+                if(!hitPressed) {
+                    playerHand.add(currentDeck.drawTopCard());
+                    hitPressed = true;
+                }
                 if (getHandValue(playerHand) > 21) {
                     for (Card c : playerHand) {
                         if (c.getValue() == 11) {
@@ -184,6 +190,10 @@ public class BlackJack extends CardGames {
         }
         if (gameOver) {
             newRound();
+        }
+        System.out.println(sketch.millis() + " " + hitTimer);
+        if(sketch.millis() <= hitTimer + 1000){
+            hitPressed = false;
         }
     }
 
