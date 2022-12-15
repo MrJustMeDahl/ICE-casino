@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Roulette extends PApplet {
-
     public static boolean rouletteRunning = false;
     private boolean winningfieldFound = false;
     private boolean winnerWinnerChickenDinner = false;
@@ -17,7 +16,6 @@ public class Roulette extends PApplet {
     private float newY;
     private float newT;
     private int value;
-
     ArrayList<Bets> makeBet = new ArrayList<Bets>();
     private boolean mouseIsNotPressed = true;
     int betChange = 20;
@@ -191,7 +189,6 @@ public class Roulette extends PApplet {
                     placeBet(new Bets(totalBetSize, 40, 1));
                     buttonPressedHard = true;
                 }
-
             }
         }
 
@@ -415,7 +412,7 @@ public class Roulette extends PApplet {
             text("EXITING PROGRAM", width / 8 + 180, height / 3 + 515);
 
             if (millis() > time + 3000) {
-                rouletteRunning = false;
+                exit();
             }
         }
     }
@@ -460,12 +457,10 @@ public class Roulette extends PApplet {
             }
         }
     }
-
     @Override
     public void mouseReleased() {
 
         buttonPressedHard = false;
-
     }
 
 //******
