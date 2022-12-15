@@ -191,7 +191,6 @@ public class BlackJack extends CardGames {
         if (gameOver) {
             newRound();
         }
-        System.out.println(sketch.millis() + " " + hitTimer);
         if(sketch.millis() <= hitTimer + 1000){
             hitPressed = false;
         }
