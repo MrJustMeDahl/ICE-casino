@@ -500,11 +500,19 @@ public class Roulette extends PApplet {
     public boolean hasWon(Roulettefields field) {
         for (Bets b : makeBet) {
             if (b.getvalue() == field.getValue()) {
-                winningAmount = b.getBet() * 50;
+                winningAmount = b.getBet() * 14;
                 ProgramControl.currentUser.receiveMoney((float) (winningAmount));
                 return true;
             }
             if (b.getvalue() == 40 || b.getvalue() == 15) {
+                if (b.getColor() == field.getColor()) {
+                    winningAmount = (float) (b.getBet() * 1.5);
+                    ProgramControl.currentUser.receiveMoney((float) (winningAmount));
+                    return true;
+
+                }
+            }
+            if (b.getvalue() == 50 || b.getvalue() == 15) {
                 if (b.getColor() == field.getColor()) {
                     winningAmount = (float) (b.getBet() * 1.5);
                     ProgramControl.currentUser.receiveMoney((float) (winningAmount));
